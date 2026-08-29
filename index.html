@@ -426,8 +426,24 @@ async function autoProcess(){
   const now=Date.now();
   const due=bosses.filter(b=>b.autoKill && b.next && now>=b.next+(b.autoDelay||1)*60000);
   for(const b of due){
+    const oldNext=b.next;
     const next=now+b.respawn;
-    await sb.from("bosses").update({next_spawn:next}).eq("id",b.id).lt("next_spawn",now+1);
+
+    // Update the local timer immediately. Do not wait for Supabase/realtime.
+    b.next=next;
+    render();
+
+    const {error}=await sb.from("bosses")
+      .update({next_spawn:next})
+      .eq("id",b.id)
+      .lt("next_spawn",now+1);
+
+    if(error){
+      // If the database update failed, restore the previous timer.
+      b.next=oldNext;
+      render();
+      console.error("Auto-process failed:", error);
+    }
   }
 }
 
