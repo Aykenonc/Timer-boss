@@ -156,9 +156,24 @@ $("save").onclick = async () => {
 async function kill(i){
   const b=bosses[i];
   if(!b) return;
+  const oldNext=b.next;
   const next=Date.now()+b.respawn;
+
+  // Update tampilan langsung supaya KILL terasa responsif.
+  b.next=next;
+  render();
+
   const {error}=await sb.from("bosses").update({next_spawn:next}).eq("id",b.id);
-  if(error) alert("Gagal KILL: " + error.message);
+  if(error){
+    // Kalau update database gagal, kembalikan tampilan ke nilai sebelumnya.
+    b.next=oldNext;
+    render();
+    alert("Gagal KILL: " + error.message);
+    return;
+  }
+
+  // Pastikan tampilan mengikuti data terbaru dari Supabase.
+  await loadBosses();
 }
 
 function editBoss(i){
