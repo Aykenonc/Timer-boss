@@ -3,22 +3,22 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Boss Timer V4.1 FIX</title>
+<title>Boss Timer V5 - Hide Boss</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Arial,Helvetica,sans-serif;background:#090a0c;color:#f5f5f5;max-width:1500px;margin:auto;padding:14px 18px 30px;font-size:13px}
 .header{display:flex;align-items:center;gap:14px;margin-bottom:14px}.title{font-size:24px;font-weight:800;white-space:nowrap}.title span{color:#e33b32;font-size:18px}.header-tools{display:flex;align-items:center;gap:8px;margin-left:auto}.search{width:260px;background:#0d1014;color:#fff;border:1px solid #343941;border-radius:7px;padding:10px 12px;outline:0;font-size:13px}
 button{background:#181c21;color:#fff;border:1px solid #343941;border-radius:6px;padding:9px 13px;font-size:12px;font-weight:700;cursor:pointer}button:hover{background:#242a31}.add-btn{background:#702b26;border-color:#8e3831}.settings{font-size:17px;padding:7px 11px}
-.table{border:1px solid #2a2d31;border-radius:9px;overflow:hidden;background:#0b0d10}.table-head,.boss-row{display:grid;grid-template-columns:minmax(270px,1.1fr) minmax(230px,1fr) 45px 150px 255px;align-items:center}.table-head{min-height:42px;background:#0d0f12;color:#aab0b8;font-size:12px;text-transform:uppercase;letter-spacing:.3px;padding:0 18px}.boss-row{min-height:64px;padding:7px 18px;border-top:1px solid #272a2e;background:#0d0f11}.boss-row:nth-child(odd){background:#100c0d}.boss-row:hover{background:#17191d}.boss-info{min-width:0}.boss-name{font-size:15px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.boss-detail{margin-top:5px;color:#9ca2aa;font-size:11px}.boss-detail .v{color:#43c56b;font-weight:700}.location{color:#aeb4bc;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.warning{text-align:center;color:#ffd400;font-size:18px;font-weight:900}.status-ready .warning{color:#ffd400}.timer{text-align:right;white-space:nowrap}.timer-main{font-size:16px;color:#ffd400;font-weight:800}.timer-sub{color:#969ca4;font-size:11px;margin-top:4px}.status-ready .timer-main{color:#ff4d43}.actions{display:flex;justify-content:flex-end;gap:9px}.actions button{min-width:70px}.actions .kill{color:#ff493e}.actions .edit{color:#a9d6ff}.empty{text-align:center;padding:30px;color:#777}
+.table{border:1px solid #2a2d31;border-radius:9px;overflow:hidden;background:#0b0d10}.table-head,.boss-row{display:grid;grid-template-columns:minmax(270px,1.1fr) 95px 45px 150px 255px;align-items:center}.table-head{min-height:42px;background:#0d0f12;color:#aab0b8;font-size:12px;text-transform:uppercase;letter-spacing:.3px;padding:0 18px}.boss-row{min-height:64px;padding:7px 18px;border-top:1px solid #272a2e;background:#0d0f11}.boss-row:nth-child(odd){background:#100c0d}.boss-row:hover{background:#17191d}.boss-row.hidden-row{opacity:.58}.boss-row.hidden-row .boss-name,.boss-row.hidden-row .boss-detail,.boss-row.hidden-row .location,.boss-row.hidden-row .warning,.boss-row.hidden-row .timer,.boss-row.hidden-row .actions{ text-decoration:line-through; }.boss-row.hidden-row .hide{ text-decoration:none; }.boss-info{min-width:0}.boss-name{font-size:15px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.boss-detail{margin-top:5px;color:#9ca2aa;font-size:11px}.boss-detail .v{color:#43c56b;font-weight:700}.location{color:#aeb4bc;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.warning{text-align:center;color:#ffd400;font-size:18px;font-weight:900}.status-ready .warning{color:#ffd400}.timer{text-align:right;white-space:nowrap}.timer-main{font-size:16px;color:#ffd400;font-weight:800}.timer-sub{color:#969ca4;font-size:11px;margin-top:4px}.status-ready .timer-main{color:#ff4d43}.actions{display:flex;justify-content:flex-end;gap:9px}.actions button{min-width:60px}.actions .hide{color:#d7b3ff}.actions .kill{color:#ff493e}.actions .edit{color:#a9d6ff}.empty{text-align:center;padding:30px;color:#777}
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:9999;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-box{width:min(430px,100%);background:#181c21;border:1px solid #38404a;border-radius:8px;box-shadow:0 24px 70px #000a;padding:16px}.modal-box h3{margin:0 0 12px;font-size:15px}.modal-box label{display:block;margin:9px 0 5px;color:#b6bcc4;font-size:10px}.modal-box input{width:100%;padding:8px 9px;border:1px solid #343b44;background:#0c0f13;color:#fff;border-radius:5px}.modal-row{display:flex;gap:8px;align-items:flex-end}.time-field{display:flex;flex-direction:column;gap:4px}.time-field span{font-size:9px;color:#8f97a1}.time-field input{width:66px}.time-sep{padding-bottom:7px;color:#8f97a1}.modal-actions{display:flex;justify-content:flex-end;gap:6px;margin-top:14px}.modal-actions .primary{background:#37414c}
-@media(max-width:1050px){body{padding:10px}.header{flex-wrap:wrap}.header-tools{margin-left:0;width:100%}.search{flex:1;width:auto}.table-head,.boss-row{grid-template-columns:minmax(180px,1fr) minmax(130px,.8fr) 32px 120px 215px}}
-@media(max-width:760px){body{padding:5px}.title{font-size:18px}.title span{font-size:14px}.header{gap:6px;margin-bottom:7px}.header-tools{gap:4px}.header-tools button{padding:7px 8px;font-size:9px}.search{padding:7px 8px;font-size:10px}.table-head,.boss-row{grid-template-columns:minmax(100px,1.05fr) minmax(85px,.8fr) 22px 86px 190px}.table-head{padding:0 7px;font-size:9px;min-height:32px}.boss-row{padding:5px 7px;min-height:48px}.boss-name{font-size:11px}.boss-detail{font-size:8px;margin-top:2px}.location{font-size:9px}.warning{font-size:12px}.timer-main{font-size:11px}.timer-sub{font-size:7px;margin-top:2px}.actions{gap:3px}.actions button{min-width:0;padding:5px 6px;font-size:8px}}
+@media(max-width:1050px){body{padding:10px}.header{flex-wrap:wrap}.header-tools{margin-left:0;width:100%}.search{flex:1;width:auto}.table-head,.boss-row{grid-template-columns:minmax(180px,1fr) 80px 32px 120px 215px}}
+@media(max-width:760px){body{padding:5px}.title{font-size:18px}.title span{font-size:14px}.header{gap:6px;margin-bottom:7px}.header-tools{gap:4px}.header-tools button{padding:7px 8px;font-size:9px}.search{padding:7px 8px;font-size:10px}.table-head,.boss-row{grid-template-columns:minmax(100px,1.05fr) 65px 22px 86px 190px}.table-head{padding:0 7px;font-size:9px;min-height:32px}.boss-row{padding:5px 7px;min-height:48px}.boss-name{font-size:11px}.boss-detail{font-size:8px;margin-top:2px}.location{font-size:9px}.warning{font-size:12px}.timer-main{font-size:11px}.timer-sub{font-size:7px;margin-top:2px}.actions{gap:3px}.actions button{min-width:0;padding:5px 6px;font-size:8px}}
 @media(max-width:520px){body{overflow-x:auto;min-width:500px}}
 </style>
 </head>
 <body>
-<div class="header"><div class="title">BOSS TIMER <span>V4.1</span></div><div class="header-tools">
-<input id="search" class="search" placeholder="🔍  Search boss..."><button class="add-btn" onclick="openAddModal()">Tambah Boss</button><button onclick="document.getElementById('importFile').click()">Import JSON</button><button onclick="exportData()">Export JSON</button><button onclick="resetAll()">Reset All</button><button class="settings">⚙</button><input id="importFile" type="file" accept=".json" style="display:none" onchange="importData(event)"></div></div>
-<div class="table"><div class="table-head"><div>BOSS</div><div>LOKASI</div><div>STATUS</div><div style="text-align:right">NEXT SPAWN</div><div></div></div><div id="list"></div></div>
+<div class="header"><div class="title">BOSS TIMER <span>V5</span></div><div class="header-tools">
+<input id="search" class="search" placeholder="🔍  Search boss..."><button class="add-btn" onclick="openAddModal()">Tambah Boss</button><button onclick="document.getElementById('importFile').click()">Import JSON</button><button onclick="exportData()">Export JSON</button><button onclick="toggleHidden()" id="hiddenBtn">Show Hidden</button><button onclick="resetAll()">Reset All</button><button class="settings">⚙</button><input id="importFile" type="file" accept=".json" style="display:none" onchange="importData(event)"></div></div>
+<div class="table"><div class="table-head"><div>BOSS</div><div>KILL</div><div>STATUS</div><div style="text-align:right">NEXT SPAWN</div><div></div></div><div id="list"></div></div>
 <div id="addModal" class="modal" onclick="if(event.target===this)closeAddModal()"><div class="modal-box"><h3>Tambah Boss</h3><label>Nama Boss</label><input id="name" placeholder="Nama Boss"><label>Lokasi</label><input id="location" placeholder="Lokasi Boss"><label>Cycle Start</label><div class="modal-row"><div class="time-field"><span>Jam</span><input id="hh" type="number" min="0" max="23" value="8"></div><div class="time-sep">:</div><div class="time-field"><span>Menit</span><input id="mm" type="number" min="0" max="59" value="0"></div></div><label>Respawn</label><div class="modal-row"><input id="rh" type="number" min="0" value="6"> Jam <input id="rm" type="number" min="0" max="59" value="0"> Menit</div><label><input type="checkbox" id="autoKill" checked style="width:auto"> Auto Kill</label><label>Delay (menit)</label><input id="autoDelay" type="number" value="1" min="0"><div class="modal-actions"><button onclick="closeAddModal()">Batal</button><button class="primary" id="save">Tambah Boss</button></div></div></div>
 <div id="editModal" class="modal" onclick="if(event.target===this)closeEditModal()"><div class="modal-box"><h3>Edit Boss</h3><label>Nama Boss</label><input id="editName"><label>Lokasi</label><input id="editLocation"><label>Cycle Start</label><div class="modal-row"><div class="time-field"><span>Jam</span><input id="editHh" type="number" min="0" max="23"></div><div class="time-sep">:</div><div class="time-field"><span>Menit</span><input id="editMm" type="number" min="0" max="59"></div></div><label>Respawn</label><div class="modal-row"><input id="editRh" type="number" min="0"> Jam <input id="editRm" type="number" min="0" max="59"> Menit</div><div class="modal-actions"><button onclick="closeEditModal()">Batal</button><button class="primary" onclick="saveEditModal()">Simpan</button></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -38,6 +38,10 @@ const $ = id => document.getElementById(id);
 const INITIAL_BOSSES = [{"name":"Enkura","hh":10,"mm":2,"rh":3,"rm":30,"respawn":12600000,"next":1787911320000},{"name":"Valefar","hh":13,"mm":33,"rh":3,"rm":30,"respawn":12600000,"next":1787911380000},{"name":"Felis","hh":13,"mm":23,"rh":2,"rm":0,"respawn":7200000,"next":1787912640577},{"name":"Kelsus","hh":11,"mm":31,"rh":6,"rm":0,"respawn":21600000,"next":1787913060000},{"name":"Breka","hh":13,"mm":34,"rh":4,"rm":0,"respawn":14400000,"next":1787913240000},{"name":"Gahareth","hh":11,"mm":36,"rh":6,"rm":0,"respawn":21600000,"next":1787913360000},{"name":"Basila","hh":10,"mm":7,"rh":2,"rm":30,"respawn":9000000,"next":1787913480576},{"name":"Hisilrome","hh":11,"mm":44,"rh":6,"rm":0,"respawn":21600000,"next":1787913840000},{"name":"Pan Narod","hh":8,"mm":43,"rh":3,"rm":0,"respawn":10800000,"next":1787913840576},{"name":"Behemoth","hh":11,"mm":47,"rh":6,"rm":0,"respawn":21600000,"next":1787914020000},{"name":"Matura","hh":11,"mm":9,"rh":4,"rm":0,"respawn":14400000,"next":1787919000576},{"name":"Timitris","hh":9,"mm":12,"rh":5,"rm":0,"respawn":18000000,"next":1787919220348},{"name":"Stonegeist","hh":11,"mm":14,"rh":4,"rm":0,"respawn":14400000,"next":1787919300577},{"name":"Talkin","hh":9,"mm":12,"rh":5,"rm":0,"respawn":18000000,"next":1787919515015},{"name":"Repiro","hh":9,"mm":18,"rh":5,"rm":0,"respawn":18000000,"next":1787919683847},{"name":"Chertuba","hh":13,"mm":23,"rh":3,"rm":0,"respawn":10800000,"next":1787919840697},{"name":"Thanatos","hh":19,"mm":29,"rh":24,"rm":0,"respawn":86400000,"next":1787920140000},{"name":"Selu","hh":12,"mm":0,"rh":7,"rm":30,"respawn":27000000,"next":1787920200000},{"name":"Queen Ant","hh":13,"mm":33,"rh":6,"rm":0,"respawn":21600000,"next":1787920380000},{"name":"Balbo","hh":11,"mm":33,"rh":8,"rm":0,"respawn":28800000,"next":1787920380000},{"name":"Mutated Cruma","hh":11,"mm":34,"rh":8,"rm":0,"respawn":28800000,"next":1787920440000},{"name":"Dragon Beast","hh":19,"mm":39,"rh":12,"rm":0,"respawn":43200000,"next":1787920740000},{"name":"Timiniel","hh":11,"mm":43,"rh":8,"rm":0,"respawn":28800000,"next":1787920980000},{"name":"Cont Cruma 4F","hh":11,"mm":50,"rh":8,"rm":0,"respawn":28800000,"next":1787921400000},{"name":"Core Susceptor","hh":19,"mm":50,"rh":12,"rm":0,"respawn":43200000,"next":1787921400000},{"name":"Glaki","hh":11,"mm":53,"rh":8,"rm":0,"respawn":28800000,"next":1787921580000},{"name":"Katan","hh":11,"mm":58,"rh":8,"rm":0,"respawn":28800000,"next":1787921880000},{"name":"Tromba","hh":12,"mm":39,"rh":4,"rm":30,"respawn":16200000,"next":1787924561015},{"name":"Coroon","hh":12,"mm":0,"rh":10,"rm":0,"respawn":36000000,"next":1787929200000},{"name":"Talakin","hh":15,"mm":7,"rh":7,"rm":0,"respawn":25200000,"next":1787929620000},{"name":"Sarka","hh":15,"mm":7,"rh":7,"rm":0,"respawn":25200000,"next":1787929620000},{"name":"Medusa","hh":15,"mm":9,"rh":7,"rm":0,"respawn":25200000,"next":1787929740000},{"name":"Pan Draed","hh":15,"mm":11,"rh":8,"rm":0,"respawn":28800000,"next":1787933520576},{"name":"Savan","hh":11,"mm":32,"rh":12,"rm":0,"respawn":43200000,"next":1787934720000},{"name":"Landor Harpy","hh":15,"mm":40,"rh":8,"rm":0,"respawn":28800000,"next":1787935260576},{"name":"Flynt","hh":15,"mm":43,"rh":8,"rm":0,"respawn":28800000,"next":1787935440577},{"name":"Olkuth","hh":0,"mm":6,"rh":24,"rm":0,"respawn":86400000,"next":1787936760000},{"name":"Orfen","hh":0,"mm":9,"rh":24,"rm":0,"respawn":86400000,"next":1787936940000},{"name":"Caroon","hh":13,"mm":42,"rh":12,"rm":0,"respawn":43200000,"next":1787942520000},{"name":"Andras","hh":15,"mm":31,"rh":12,"rm":0,"respawn":43200000,"next":1787949120576},{"name":"Black Lily","hh":15,"mm":35,"rh":12,"rm":0,"respawn":43200000,"next":1787949360576},{"name":"Mirror","hh":15,"mm":36,"rh":12,"rm":0,"respawn":43200000,"next":1787949420577},{"name":"Cabrio","hh":15,"mm":38,"rh":12,"rm":0,"respawn":43200000,"next":1787949540577},{"name":"Samuel","hh":15,"mm":44,"rh":12,"rm":0,"respawn":43200000,"next":1787949900576},{"name":"Haff","hh":15,"mm":34,"rh":24,"rm":0,"respawn":86400000,"next":1787992500576},{"name":"Rahha","hh":13,"mm":55,"rh":33,"rm":0,"respawn":118800000,"next":1788018900000}];
 
 let bosses = [];
+const HIDDEN_KEY = "boss_timer_hidden_bosses_v1";
+function getLocalHidden(){ try{return JSON.parse(localStorage.getItem(HIDDEN_KEY)||"[]");}catch(e){return [];} }
+function setLocalHidden(arr){ localStorage.setItem(HIDDEN_KEY, JSON.stringify(arr)); }
+function isHidden(b){ return getLocalHidden().includes(String(b.id || b.name)); }
 let edit = -1;
 let alarmed = {};
 let bellCtx = null;
@@ -55,7 +59,8 @@ function fromRow(r){
     respawn: Number(r.respawn) || 0,
     next: Number(r.next_spawn) || 0,
     autoKill: r.auto_kill !== false,
-    autoDelay: Number(r.auto_delay) || 1
+    autoDelay: Number(r.auto_delay) || 1,
+     hidden: isHidden({id:r.id,name:r.name})
   };
 }
 
@@ -191,6 +196,26 @@ async function saveEditModal(){
   closeEditModal();
 }
 
+async function hideBoss(i){
+  const b=bosses[i];
+  if(!b) return;
+  const key=String(b.id || b.name);
+  const hidden=getLocalHidden();
+  const pos=hidden.indexOf(key);
+  if(pos>=0) hidden.splice(pos,1);
+  else hidden.push(key);
+  setLocalHidden(hidden);
+  b.hidden = pos < 0;
+  render();
+}
+
+function toggleHidden(){
+  window.showHiddenBosses=!window.showHiddenBosses;
+  const btn=$("hiddenBtn");
+  if(btn) btn.textContent=window.showHiddenBosses?"Hide Hidden":"Show Hidden";
+  render();
+}
+
 async function delBoss(i){
   const b=bosses[i];
   if(!b) return;
@@ -278,10 +303,12 @@ function playBell(){
 
 function render(){
   const q=(($("search")&&$("search").value)||"").trim().toLowerCase();
+  const showHidden = window.showHiddenBosses === true;
+  bosses.forEach(b=>b.hidden=isHidden(b));
   const now=Date.now();
   const visible=bosses
     .map((b,i)=>({b,i}))
-    .filter(x=>!q||x.b.name.toLowerCase().includes(q)||(x.b.location||"").toLowerCase().includes(q))
+    .filter(x=>(showHidden || !x.b.hidden) && (!q||x.b.name.toLowerCase().includes(q)||(x.b.location||"").toLowerCase().includes(q)))
     .sort((a,b)=>a.b.next-b.b.next);
 
   $("list").innerHTML=visible.length ? visible.map(({b,i})=>{
@@ -294,19 +321,19 @@ function render(){
     }
     if(rem>60000) alarmed[b.id]=false;
 
-    return `<div class="boss-row ${cls}">
+    return `<div class="boss-row ${cls}${b.hidden?" hidden-row":""}">
       <div class="boss-info">
         <div class="boss-name">${escapeHtml(b.name)}</div>
         <div class="boss-detail">Cycle: <span class="v">${String(b.hh).padStart(2,"0")}:${String(b.mm).padStart(2,"0")}</span> &nbsp;|&nbsp; Respawn: <span class="v">${b.rh}j ${b.rm}m</span></div>
       </div>
-      <div class="location">${escapeHtml(b.location||"Unmapped")}</div>
+      <div><button class="kill" onclick="kill(${i})">KILL</button></div>
       <div class="warning">${rem<=0||rem<1800000?"▲":""}</div>
       <div class="timer">
         <div class="timer-main">${rem<=0?"SPAWNED":fmt(rem)}</div>
         <div class="timer-sub">${new Date(b.next).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit",second:"2-digit"})}</div>
       </div>
       <div class="actions">
-        <button class="kill" onclick="kill(${i})">KILL</button>
+        <button class="hide" onclick="hideBoss(${i})">${b.hidden?"UNHIDE":"HIDE"}</button>
         <button class="edit" onclick="editBoss(${i})">EDIT</button>
         <button onclick="delBoss(${i})">DELETE</button>
       </div>
