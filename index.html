@@ -255,8 +255,18 @@ async function delBoss(i){
   const b=bosses[i];
   if(!b) return;
   if(!confirm("Hapus "+b.name+"?")) return;
+
+  const oldBosses = bosses.slice();
+  bosses.splice(i, 1);
+  render();
+
   const {error}=await sb.from("bosses").delete().eq("id",b.id);
-  if(error) alert("Gagal menghapus: " + error.message);
+  if(error){
+    bosses = oldBosses;
+    render();
+    alert("Gagal menghapus: " + error.message);
+    return;
+  }
 }
 
 function fmt(ms){
