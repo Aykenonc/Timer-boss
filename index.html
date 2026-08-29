@@ -207,22 +207,33 @@ async function saveEditModal(){
   const respawn=(rh*60+rm)*60000;
   const next=calcNext(hh,mm,respawn);
 
-  const {error}=await sb.from("bosses").update({
-    name,
-    location:$("editLocation").value.trim()||"Unmapped",
-    hh,mm,rh,rm,respawn,next_spawn:next
-  }).eq("id",b.id);
+  // Optimistic local update: EDIT changes immediately on screen.
+  const oldData = {
+    name:b.name, location:b.location, hh:b.hh, mm:b.mm,
+    rh:b.rh, rm:b.rm, respawn:b.respawn, next:b.next
+  };
 
-  if(error){ alert("Gagal menyimpan: " + error.message); return; }
-
-  // Update the local copy immediately so EDIT is reflected without F5.
   Object.assign(b, {
     name,
     location:$("editLocation").value.trim()||"Unmapped",
-    hh, mm, rh, rm, respawn, next_spawn: next
+    hh, mm, rh, rm, respawn, next
   });
   closeEditModal();
   render();
+
+  const {error}=await sb.from("bosses").update({
+    name:b.name,
+    location:b.location,
+    hh:b.hh, mm:b.mm, rh:b.rh, rm:b.rm,
+    respawn:b.respawn, next_spawn:b.next
+  }).eq("id",b.id);
+
+  if(error){
+    Object.assign(b, oldData);
+    render();
+    alert("Gagal menyimpan: " + error.message);
+    return;
+  }
 }
 
 async function hideBoss(i){
