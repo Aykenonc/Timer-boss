@@ -6,18 +6,18 @@
 <title>Boss Timer V5 - Hide Boss</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Arial,Helvetica,sans-serif;background:#090a0c;color:#f5f5f5;max-width:1500px;margin:auto;padding:14px 18px 30px;font-size:13px}
-.header{display:flex;align-items:center;gap:14px;margin-bottom:14px}.title{font-size:24px;font-weight:800;white-space:nowrap}.title span{color:#e33b32;font-size:18px}.header-tools{display:flex;align-items:center;gap:8px;margin-left:auto}.search{width:260px;background:#0d1014;color:#fff;border:1px solid #343941;border-radius:7px;padding:10px 12px;outline:0;font-size:13px}
-button{background:#181c21;color:#fff;border:1px solid #343941;border-radius:6px;padding:9px 13px;font-size:12px;font-weight:700;cursor:pointer}button:hover{background:#242a31}.add-btn{background:#702b26;border-color:#8e3831}.settings{font-size:17px;padding:7px 11px}
+.header{display:flex;align-items:center;gap:14px;margin-bottom:14px}.title{font-size:24px;font-weight:800;white-space:nowrap}.title span{color:#e33b32;font-size:18px}.header-tools{display:flex;align-items:center;gap:8px;margin-left:auto}.search{width:260px;background:#0d1014;color:#fff;border:1px solid #343941;border-radius:7px;padding:10px 12px;outline:0;font-size:13px}#sortMode{background:#0d1014;color:#fff;border:1px solid #343941;border-radius:7px;padding:10px 12px;outline:0;font-size:12px}#sortMode option{background:#0d1014;color:#fff}
+button{background:#181c21;color:#fff;border:1px solid #343941;border-radius:6px;padding:9px 13px;font-size:12px;font-weight:700;cursor:pointer}button:hover{background:#242a31}button:disabled{opacity:.38;cursor:not-allowed}button:disabled:hover{background:#181c21}.add-btn{background:#702b26;border-color:#8e3831}.settings{font-size:17px;padding:7px 11px}
 .table{border:1px solid #2a2d31;border-radius:9px;overflow:hidden;background:#0b0d10}.table-head,.boss-row{display:grid;grid-template-columns:minmax(270px,1.1fr) 95px 45px 150px 255px;align-items:center}.table-head{min-height:42px;background:#0d0f12;color:#aab0b8;font-size:12px;text-transform:uppercase;letter-spacing:.3px;padding:0 18px}.boss-row{min-height:64px;padding:7px 18px;border-top:1px solid #272a2e;background:#0d0f11}.boss-row:nth-child(odd){background:#100c0d}.boss-row:hover{background:#17191d}.boss-info{min-width:0}.boss-name{font-size:15px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.boss-detail{margin-top:5px;color:#9ca2aa;font-size:11px}.boss-detail .v{color:#43c56b;font-weight:700}.location{color:#aeb4bc;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.warning{text-align:center;color:#ffd400;font-size:18px;font-weight:900}.status-ready .warning{color:#ffd400}.timer{text-align:right;white-space:nowrap}.timer-main{font-size:16px;color:#ffd400;font-weight:800}.timer-sub{color:#969ca4;font-size:11px;margin-top:4px}.status-ready .timer-main{color:#ff4d43}.actions{display:flex;justify-content:flex-end;gap:9px}.actions button{min-width:60px}.actions .hide{color:#d7b3ff}.actions .kill{color:#ff493e}.actions .edit{color:#a9d6ff}.empty{text-align:center;padding:30px;color:#777}
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:9999;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-box{width:min(430px,100%);background:#181c21;border:1px solid #38404a;border-radius:8px;box-shadow:0 24px 70px #000a;padding:16px}.modal-box h3{margin:0 0 12px;font-size:15px}.modal-box label{display:block;margin:9px 0 5px;color:#b6bcc4;font-size:10px}.modal-box input{width:100%;padding:8px 9px;border:1px solid #343b44;background:#0c0f13;color:#fff;border-radius:5px}.modal-row{display:flex;gap:8px;align-items:flex-end}.time-field{display:flex;flex-direction:column;gap:4px}.time-field span{font-size:9px;color:#8f97a1}.time-field input{width:66px}.time-sep{padding-bottom:7px;color:#8f97a1}.modal-actions{display:flex;justify-content:flex-end;gap:6px;margin-top:14px}.modal-actions .primary{background:#37414c}
-@media(max-width:1050px){body{padding:10px}.header{flex-wrap:wrap}.header-tools{margin-left:0;width:100%}.search{flex:1;width:auto}.table-head,.boss-row{grid-template-columns:minmax(180px,1fr) 80px 32px 120px 215px}}
-@media(max-width:760px){body{padding:5px}.title{font-size:18px}.title span{font-size:14px}.header{gap:6px;margin-bottom:7px}.header-tools{gap:4px}.header-tools button{padding:7px 8px;font-size:9px}.search{padding:7px 8px;font-size:10px}.table-head,.boss-row{grid-template-columns:minmax(100px,1.05fr) 65px 22px 86px 190px}.table-head{padding:0 7px;font-size:9px;min-height:32px}.boss-row{padding:5px 7px;min-height:48px}.boss-name{font-size:11px}.boss-detail{font-size:8px;margin-top:2px}.location{font-size:9px}.warning{font-size:12px}.timer-main{font-size:11px}.timer-sub{font-size:7px;margin-top:2px}.actions{gap:3px}.actions button{min-width:0;padding:5px 6px;font-size:8px}}
+@media(max-width:1050px){body{padding:10px}.header{flex-wrap:wrap}.header-tools{margin-left:0;width:100%}.search{flex:1;width:auto}#sortMode{padding:7px 8px;font-size:9px}.table-head,.boss-row{grid-template-columns:minmax(180px,1fr) 80px 32px 120px 215px}}
+@media(max-width:760px){body{padding:5px}.title{font-size:18px}.title span{font-size:14px}.header{gap:6px;margin-bottom:7px}.header-tools{gap:4px}.header-tools button{padding:7px 8px;font-size:9px}.search{padding:7px 8px;font-size:10px}#sortMode{padding:7px 8px;font-size:9px}.table-head,.boss-row{grid-template-columns:minmax(100px,1.05fr) 65px 22px 86px 190px}.table-head{padding:0 7px;font-size:9px;min-height:32px}.boss-row{padding:5px 7px;min-height:48px}.boss-name{font-size:11px}.boss-detail{font-size:8px;margin-top:2px}.location{font-size:9px}.warning{font-size:12px}.timer-main{font-size:11px}.timer-sub{font-size:7px;margin-top:2px}.actions{gap:3px}.actions button{min-width:0;padding:5px 6px;font-size:8px}}
 @media(max-width:520px){body{overflow-x:auto;min-width:500px}}
 </style>
 </head>
 <body>
 <div class="header"><div class="title">BOSS TIMER <span>V5</span></div><div class="header-tools">
-<input id="search" class="search" placeholder="🔍  Search boss..."><button class="add-btn" onclick="openAddModal()">Tambah Boss</button><button onclick="document.getElementById('importFile').click()">Import JSON</button><button onclick="exportData()">Export JSON</button><button onclick="toggleHidden()" id="hiddenBtn">Show Hidden</button><button onclick="resetAll()">Reset All</button><button class="settings">⚙</button><input id="importFile" type="file" accept=".json" style="display:none" onchange="importData(event)"></div></div>
+<input id="search" class="search" placeholder="🔍  Search boss..."><select id="sortMode" title="Sort boss"><option value="spawn">Next Spawn</option><option value="name">Name A-Z</option></select><button id="undoBtn" onclick="undoAction()" title="Undo" disabled>↶ Undo</button><button id="redoBtn" onclick="redoAction()" title="Redo" disabled>↷ Redo</button><button class="add-btn" onclick="openAddModal()">Tambah Boss</button><button onclick="document.getElementById('importFile').click()">Import JSON</button><button onclick="exportData()">Export JSON</button><button onclick="toggleHidden()" id="hiddenBtn">Show Hidden</button><button onclick="resetAll()">Reset All</button><button class="settings">⚙</button><input id="importFile" type="file" accept=".json" style="display:none" onchange="importData(event)"></div></div>
 <div class="table"><div class="table-head"><div>BOSS</div><div>KILL</div><div>STATUS</div><div style="text-align:right">NEXT SPAWN</div><div></div></div><div id="list"></div></div>
 <div id="addModal" class="modal" onclick="if(event.target===this)closeAddModal()"><div class="modal-box"><h3>Tambah Boss</h3><label>Nama Boss</label><input id="name" placeholder="Nama Boss"><label>Lokasi</label><input id="location" placeholder="Lokasi Boss"><label>Cycle Start</label><div class="modal-row"><div class="time-field"><span>Jam</span><input id="hh" type="number" min="0" max="23" value="8"></div><div class="time-sep">:</div><div class="time-field"><span>Menit</span><input id="mm" type="number" min="0" max="59" value="0"></div></div><label>Respawn</label><div class="modal-row"><input id="rh" type="number" min="0" value="6"> Jam <input id="rm" type="number" min="0" max="59" value="0"> Menit</div><label><input type="checkbox" id="autoKill" checked style="width:auto"> Auto Kill</label><label>Delay (menit)</label><input id="autoDelay" type="number" value="1" min="0"><div class="modal-actions"><button onclick="closeAddModal()">Batal</button><button class="primary" id="save">Tambah Boss</button></div></div></div>
 <div id="editModal" class="modal" onclick="if(event.target===this)closeEditModal()"><div class="modal-box"><h3>Edit Boss</h3><label>Nama Boss</label><input id="editName"><label>Lokasi</label><input id="editLocation"><label>Cycle Start</label><div class="modal-row"><div class="time-field"><span>Jam</span><input id="editHh" type="number" min="0" max="23"></div><div class="time-sep">:</div><div class="time-field"><span>Menit</span><input id="editMm" type="number" min="0" max="59"></div></div><label>Respawn</label><div class="modal-row"><input id="editRh" type="number" min="0"> Jam <input id="editRm" type="number" min="0" max="59"> Menit</div><div class="modal-actions"><button onclick="closeEditModal()">Batal</button><button class="primary" onclick="saveEditModal()">Simpan</button></div></div></div>
@@ -34,6 +34,26 @@ const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_v0bjeJ8wfzb5AYjslHcUYA_nRomPTqz
 
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = id => document.getElementById(id);
+const SPAWNED_DISPLAY_MS = 2 * 60000;
+const AUTO_KILL_DEFAULT_MS = 60000;
+const AUTO_SPAWN_VISUAL_KEY = "bossTimerAutoSpawnVisual";
+function getAutoSpawnVisual(){
+  try{return JSON.parse(localStorage.getItem(AUTO_SPAWN_VISUAL_KEY)||"{}");}catch(e){return {};}
+}
+function setAutoSpawnVisual(data){
+  try{localStorage.setItem(AUTO_SPAWN_VISUAL_KEY,JSON.stringify(data));}catch(e){}
+}
+const SORT_MODE_KEY = "bossTimerSortMode";
+let sortMode = localStorage.getItem(SORT_MODE_KEY) || "spawn";
+const sortSelect = $("sortMode");
+if(sortSelect){
+  sortSelect.value = sortMode;
+  sortSelect.addEventListener("change", ()=>{
+    sortMode = sortSelect.value;
+    localStorage.setItem(SORT_MODE_KEY, sortMode);
+    render();
+  });
+}
 
 const INITIAL_BOSSES = [{"name":"Enkura","hh":10,"mm":2,"rh":3,"rm":30,"respawn":12600000,"next":1787911320000},{"name":"Valefar","hh":13,"mm":33,"rh":3,"rm":30,"respawn":12600000,"next":1787911380000},{"name":"Felis","hh":13,"mm":23,"rh":2,"rm":0,"respawn":7200000,"next":1787912640577},{"name":"Kelsus","hh":11,"mm":31,"rh":6,"rm":0,"respawn":21600000,"next":1787913060000},{"name":"Breka","hh":13,"mm":34,"rh":4,"rm":0,"respawn":14400000,"next":1787913240000},{"name":"Gahareth","hh":11,"mm":36,"rh":6,"rm":0,"respawn":21600000,"next":1787913360000},{"name":"Basila","hh":10,"mm":7,"rh":2,"rm":30,"respawn":9000000,"next":1787913480576},{"name":"Hisilrome","hh":11,"mm":44,"rh":6,"rm":0,"respawn":21600000,"next":1787913840000},{"name":"Pan Narod","hh":8,"mm":43,"rh":3,"rm":0,"respawn":10800000,"next":1787913840576},{"name":"Behemoth","hh":11,"mm":47,"rh":6,"rm":0,"respawn":21600000,"next":1787914020000},{"name":"Matura","hh":11,"mm":9,"rh":4,"rm":0,"respawn":14400000,"next":1787919000576},{"name":"Timitris","hh":9,"mm":12,"rh":5,"rm":0,"respawn":18000000,"next":1787919220348},{"name":"Stonegeist","hh":11,"mm":14,"rh":4,"rm":0,"respawn":14400000,"next":1787919300577},{"name":"Talkin","hh":9,"mm":12,"rh":5,"rm":0,"respawn":18000000,"next":1787919515015},{"name":"Repiro","hh":9,"mm":18,"rh":5,"rm":0,"respawn":18000000,"next":1787919683847},{"name":"Chertuba","hh":13,"mm":23,"rh":3,"rm":0,"respawn":10800000,"next":1787919840697},{"name":"Thanatos","hh":19,"mm":29,"rh":24,"rm":0,"respawn":86400000,"next":1787920140000},{"name":"Selu","hh":12,"mm":0,"rh":7,"rm":30,"respawn":27000000,"next":1787920200000},{"name":"Queen Ant","hh":13,"mm":33,"rh":6,"rm":0,"respawn":21600000,"next":1787920380000},{"name":"Balbo","hh":11,"mm":33,"rh":8,"rm":0,"respawn":28800000,"next":1787920380000},{"name":"Mutated Cruma","hh":11,"mm":34,"rh":8,"rm":0,"respawn":28800000,"next":1787920440000},{"name":"Dragon Beast","hh":19,"mm":39,"rh":12,"rm":0,"respawn":43200000,"next":1787920740000},{"name":"Timiniel","hh":11,"mm":43,"rh":8,"rm":0,"respawn":28800000,"next":1787920980000},{"name":"Cont Cruma 4F","hh":11,"mm":50,"rh":8,"rm":0,"respawn":28800000,"next":1787921400000},{"name":"Core Susceptor","hh":19,"mm":50,"rh":12,"rm":0,"respawn":43200000,"next":1787921400000},{"name":"Glaki","hh":11,"mm":53,"rh":8,"rm":0,"respawn":28800000,"next":1787921580000},{"name":"Katan","hh":11,"mm":58,"rh":8,"rm":0,"respawn":28800000,"next":1787921880000},{"name":"Tromba","hh":12,"mm":39,"rh":4,"rm":30,"respawn":16200000,"next":1787924561015},{"name":"Coroon","hh":12,"mm":0,"rh":10,"rm":0,"respawn":36000000,"next":1787929200000},{"name":"Talakin","hh":15,"mm":7,"rh":7,"rm":0,"respawn":25200000,"next":1787929620000},{"name":"Sarka","hh":15,"mm":7,"rh":7,"rm":0,"respawn":25200000,"next":1787929620000},{"name":"Medusa","hh":15,"mm":9,"rh":7,"rm":0,"respawn":25200000,"next":1787929740000},{"name":"Pan Draed","hh":15,"mm":11,"rh":8,"rm":0,"respawn":28800000,"next":1787933520576},{"name":"Savan","hh":11,"mm":32,"rh":12,"rm":0,"respawn":43200000,"next":1787934720000},{"name":"Landor Harpy","hh":15,"mm":40,"rh":8,"rm":0,"respawn":28800000,"next":1787935260576},{"name":"Flynt","hh":15,"mm":43,"rh":8,"rm":0,"respawn":28800000,"next":1787935440577},{"name":"Olkuth","hh":0,"mm":6,"rh":24,"rm":0,"respawn":86400000,"next":1787936760000},{"name":"Orfen","hh":0,"mm":9,"rh":24,"rm":0,"respawn":86400000,"next":1787936940000},{"name":"Caroon","hh":13,"mm":42,"rh":12,"rm":0,"respawn":43200000,"next":1787942520000},{"name":"Andras","hh":15,"mm":31,"rh":12,"rm":0,"respawn":43200000,"next":1787949120576},{"name":"Black Lily","hh":15,"mm":35,"rh":12,"rm":0,"respawn":43200000,"next":1787949360576},{"name":"Mirror","hh":15,"mm":36,"rh":12,"rm":0,"respawn":43200000,"next":1787949420577},{"name":"Cabrio","hh":15,"mm":38,"rh":12,"rm":0,"respawn":43200000,"next":1787949540577},{"name":"Samuel","hh":15,"mm":44,"rh":12,"rm":0,"respawn":43200000,"next":1787949900576},{"name":"Haff","hh":15,"mm":34,"rh":24,"rm":0,"respawn":86400000,"next":1787992500576},{"name":"Rahha","hh":13,"mm":55,"rh":33,"rm":0,"respawn":118800000,"next":1788018900000}];
 
@@ -47,6 +67,60 @@ let edit = -1;
 let alarmed = {};
 let bellCtx = null;
 let loading = false;
+let undoStack = [];
+let redoStack = [];
+let historyBusy = false;
+
+function updateHistoryButtons(){
+  const u=$("undoBtn"), r=$("redoBtn");
+  if(u) u.disabled = undoStack.length===0 || historyBusy;
+  if(r) r.disabled = redoStack.length===0 || historyBusy;
+}
+
+function pushHistory(entry){
+  if(historyBusy) return;
+  undoStack.push(entry);
+  if(undoStack.length>50) undoStack.shift();
+  redoStack=[];
+  updateHistoryButtons();
+}
+
+async function undoAction(){
+  if(!undoStack.length || historyBusy) return;
+  const entry=undoStack.pop();
+  historyBusy=true; updateHistoryButtons();
+  try{
+    await entry.undo();
+    redoStack.push(entry);
+  }catch(err){
+    undoStack.push(entry);
+    alert("Undo gagal: " + (err.message || err));
+  }finally{
+    historyBusy=false;
+    updateHistoryButtons();
+  }
+}
+
+async function redoAction(){
+  if(!redoStack.length || historyBusy) return;
+  const entry=redoStack.pop();
+  historyBusy=true; updateHistoryButtons();
+  try{
+    await entry.redo();
+    undoStack.push(entry);
+  }catch(err){
+    redoStack.push(entry);
+    alert("Redo gagal: " + (err.message || err));
+  }finally{
+    historyBusy=false;
+    updateHistoryButtons();
+  }
+}
+
+document.addEventListener("keydown", e=>{
+  if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==="z" && !e.shiftKey){ e.preventDefault(); undoAction(); }
+  if((e.ctrlKey||e.metaKey) && (e.key.toLowerCase()==="y" || (e.key.toLowerCase()==="z"&&e.shiftKey))){ e.preventDefault(); redoAction(); }
+});
 
 function fromRow(r){
   return {
@@ -143,8 +217,14 @@ $("save").onclick = async () => {
   b.respawn=(b.rh*60+b.rm)*60000;
   b.next=calcNext(b.hh,b.mm,b.respawn);
 
-  const {error} = await sb.from("bosses").insert(toRow(b));
+  const {data:created,error} = await sb.from("bosses").insert(toRow(b)).select().single();
   if(error){ alert("Gagal menambah boss: " + error.message); return; }
+
+  pushHistory({
+    label:"Tambah "+b.name,
+    undo:async()=>{ const {error}=await sb.from("bosses").delete().eq("id",created.id); if(error)throw error; await loadBosses(); },
+    redo:async()=>{ const {error}=await sb.from("bosses").insert(created); if(error)throw error; await loadBosses(); }
+  });
 
   closeAddModal();
   ["name","location","hh","mm","rh","rm"].forEach(id=>$(id).value="");
@@ -158,21 +238,22 @@ async function kill(i){
   if(!b) return;
   const oldNext=b.next;
   const next=Date.now()+b.respawn;
-
-  // Update tampilan langsung supaya KILL terasa responsif.
   b.next=next;
   render();
 
   const {error}=await sb.from("bosses").update({next_spawn:next}).eq("id",b.id);
   if(error){
-    // Kalau update database gagal, kembalikan tampilan ke nilai sebelumnya.
     b.next=oldNext;
     render();
     alert("Gagal KILL: " + error.message);
     return;
   }
 
-  // Pastikan tampilan mengikuti data terbaru dari Supabase.
+  pushHistory({
+    label:"KILL "+b.name,
+    undo:async()=>{ const {error}=await sb.from("bosses").update({next_spawn:oldNext}).eq("id",b.id); if(error)throw error; await loadBosses(); },
+    redo:async()=>{ const {error}=await sb.from("bosses").update({next_spawn:next}).eq("id",b.id); if(error)throw error; await loadBosses(); }
+  });
   await loadBosses();
 }
 
@@ -234,6 +315,30 @@ async function saveEditModal(){
     alert("Gagal menyimpan: " + error.message);
     return;
   }
+
+  const newData = {
+    name:b.name, location:b.location, hh:b.hh, mm:b.mm,
+    rh:b.rh, rm:b.rm, respawn:b.respawn, next:b.next
+  };
+  pushHistory({
+    label:"Edit "+b.name,
+    undo:async()=>{ const {error}=await sb.from("bosses").update({name:oldData.name,location:oldData.location,hh:oldData.hh,mm:oldData.mm,rh:oldData.rh,rm:oldData.rm,respawn:oldData.respawn,next_spawn:oldData.next}).eq("id",b.id); if(error)throw error; await loadBosses(); },
+    redo:async()=>{ const {error}=await sb.from("bosses").update({name:newData.name,location:newData.location,hh:newData.hh,mm:newData.mm,rh:newData.rh,rm:newData.rm,respawn:newData.respawn,next_spawn:newData.next}).eq("id",b.id); if(error)throw error; await loadBosses(); }
+  });
+}
+
+async function setHiddenState(b,wanted){
+  const key=String(b.id);
+  if(wanted){
+    const {error}=await sb.from("boss_hidden").upsert({boss_id:key},{onConflict:"boss_id"});
+    if(error)throw error;
+    sharedHidden.add(key);
+  }else{
+    const {error}=await sb.from("boss_hidden").delete().eq("boss_id",key);
+    if(error)throw error;
+    sharedHidden.delete(key);
+  }
+  b.hidden=wanted;
 }
 
 async function hideBoss(i){
@@ -241,18 +346,15 @@ async function hideBoss(i){
   if(!b || b.id==null) return;
   const key=String(b.id);
   const currentlyHidden=sharedHidden.has(key);
-
-  if(currentlyHidden){
-    const {error}=await sb.from("boss_hidden").delete().eq("boss_id",key);
-    if(error){ alert("Gagal unhide: " + error.message); return; }
-    sharedHidden.delete(key);
-  }else{
-    const {error}=await sb.from("boss_hidden").upsert({boss_id:key},{onConflict:"boss_id"});
-    if(error){ alert("Gagal hide: " + error.message); return; }
-    sharedHidden.add(key);
-  }
-  b.hidden=!currentlyHidden;
+  try{
+    await setHiddenState(b,!currentlyHidden);
+  }catch(error){ alert((currentlyHidden?"Gagal unhide: ":"Gagal hide: ")+error.message); return; }
   render();
+  pushHistory({
+    label:(currentlyHidden?"Unhide ":"Hide ")+b.name,
+    undo:async()=>{ await setHiddenState(b,currentlyHidden); render(); },
+    redo:async()=>{ await setHiddenState(b,!currentlyHidden); render(); }
+  });
 }
 
 function toggleHidden(){
@@ -271,6 +373,8 @@ async function delBoss(i){
   bosses.splice(i, 1);
   render();
 
+  const deletedRow = toRow(b);
+  deletedRow.id = b.id;
   const {error}=await sb.from("bosses").delete().eq("id",b.id);
   if(error){
     bosses = oldBosses;
@@ -278,6 +382,11 @@ async function delBoss(i){
     alert("Gagal menghapus: " + error.message);
     return;
   }
+  pushHistory({
+    label:"Delete "+b.name,
+    undo:async()=>{ const {error}=await sb.from("bosses").insert(deletedRow); if(error)throw error; await loadBosses(); },
+    redo:async()=>{ const {error}=await sb.from("bosses").delete().eq("id",b.id); if(error)throw error; await loadBosses(); }
+  });
 }
 
 function fmt(ms){
@@ -362,14 +471,32 @@ function render(){
   const showHidden = window.showHiddenBosses === true;
   bosses.forEach(b=>b.hidden=isHidden(b));
   const now=Date.now();
+  const autoVisual=getAutoSpawnVisual();
+  let visualChanged=false;
+  Object.keys(autoVisual).forEach(id=>{
+    if(now>=Number(autoVisual[id])+SPAWNED_DISPLAY_MS){
+      delete autoVisual[id];
+      visualChanged=true;
+    }
+  });
+  if(visualChanged) setAutoSpawnVisual(autoVisual);
   const visible=bosses
     .map((b,i)=>({b,i}))
     .filter(x=>(showHidden || !x.b.hidden) && (!q||x.b.name.toLowerCase().includes(q)||(x.b.location||"").toLowerCase().includes(q)))
-    .sort((a,b)=>a.b.next-b.b.next);
+    .sort((a,b)=>{
+      if(sortMode === "name"){
+        const collator = new Intl.Collator("en", {numeric:true, sensitivity:"base"});
+        return collator.compare(a.b.name||"", b.b.name||"");
+      }
+      return a.b.next-b.b.next;
+    });
 
   $("list").innerHTML=visible.length ? visible.map(({b,i})=>{
     const rem=b.next-now;
-    const cls=rem<=0?"status-ready":rem<1800000?"status-soon":"";
+    const autoVisual=getAutoSpawnVisual();
+    const visualSpawnAt=Number(autoVisual[String(b.id)])||0;
+    const showSpawned=(rem<=0)||(b.autoKill===true&&visualSpawnAt>0&&now<visualSpawnAt+SPAWNED_DISPLAY_MS);
+    const cls=showSpawned?"status-ready":rem<1800000?"status-soon":"";
 
     if(rem>0&&rem<=60000&&!alarmed[b.id]){
       playBell();
@@ -385,7 +512,7 @@ function render(){
       <div><button class="kill" onclick="kill(${i})">KILL</button></div>
       <div class="warning">${rem<=0||rem<1800000?"▲":""}</div>
       <div class="timer">
-        <div class="timer-main">${rem<=0?"SPAWNED":fmt(rem)}</div>
+        <div class="timer-main">${showSpawned?"SPAWNED":fmt(rem)}</div>
         <div class="timer-sub">${new Date(b.next).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit",second:"2-digit"})}</div>
       </div>
       <div class="actions">
@@ -406,6 +533,7 @@ function escapeHtml(x){
 function openAddModal(){$("addModal").classList.add("show")}
 function closeAddModal(){$("addModal").classList.remove("show")}
 if($("search"))$("search").addEventListener("input",render);
+updateHistoryButtons();
 
 async function resetAll(){
   if(!confirm("Reset semua boss?")) return;
@@ -428,6 +556,9 @@ async function autoProcess(){
   for(const b of due){
     const oldNext=b.next;
     const next=now+b.respawn;
+    const visual=getAutoSpawnVisual();
+    visual[String(b.id)]=oldNext;
+    setAutoSpawnVisual(visual);
 
     // Update the local timer immediately. Do not wait for Supabase/realtime.
     b.next=next;
@@ -441,6 +572,9 @@ async function autoProcess(){
     if(error){
       // If the database update failed, restore the previous timer.
       b.next=oldNext;
+      const visual=getAutoSpawnVisual();
+      delete visual[String(b.id)];
+      setAutoSpawnVisual(visual);
       render();
       console.error("Auto-process failed:", error);
     }
