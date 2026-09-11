@@ -474,7 +474,7 @@ function render(){
   const autoVisual=getAutoSpawnVisual();
   let visualChanged=false;
   Object.keys(autoVisual).forEach(id=>{
-    if(now>=Number(autoVisual[id])+SPAWNED_DISPLAY_MS){
+    if(now>=Number(autoVisual[id])){
       delete autoVisual[id];
       visualChanged=true;
     }
@@ -490,8 +490,8 @@ function render(){
       }
       const aVisual=Number(autoVisual[String(a.b.id)])||0;
       const bVisual=Number(autoVisual[String(b.b.id)])||0;
-      const aSpawned=(a.b.next<=now)||(a.b.autoKill===true&&aVisual>0&&now<aVisual+SPAWNED_DISPLAY_MS);
-      const bSpawned=(b.b.next<=now)||(b.b.autoKill===true&&bVisual>0&&now<bVisual+SPAWNED_DISPLAY_MS);
+      const aSpawned=(a.b.next<=now)||(a.b.autoKill===true&&aVisual>now);
+      const bSpawned=(b.b.next<=now)||(b.b.autoKill===true&&bVisual>now);
       if(aSpawned!==bSpawned) return aSpawned ? -1 : 1;
       return a.b.next-b.b.next;
     });
@@ -500,7 +500,7 @@ function render(){
     const rem=b.next-now;
     const autoVisual=getAutoSpawnVisual();
     const visualSpawnAt=Number(autoVisual[String(b.id)])||0;
-    const showSpawned=(rem<=0)||(b.autoKill===true&&visualSpawnAt>0&&now<visualSpawnAt+SPAWNED_DISPLAY_MS);
+    const showSpawned=(rem<=0)||(b.autoKill===true&&visualSpawnAt>now);
     const cls=showSpawned?"status-ready":rem<1800000?"status-soon":"";
 
     if(rem>0&&rem<=60000&&!alarmed[b.id]){
@@ -562,7 +562,7 @@ async function autoProcess(){
     const oldNext=b.next;
     const next=now+b.respawn;
     const visual=getAutoSpawnVisual();
-    visual[String(b.id)]=oldNext;
+    visual[String(b.id)]=oldNext+SPAWNED_DISPLAY_MS;
     setAutoSpawnVisual(visual);
 
     // Update the local timer immediately. Do not wait for Supabase/realtime.
