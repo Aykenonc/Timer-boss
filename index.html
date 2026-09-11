@@ -488,6 +488,11 @@ function render(){
         const collator = new Intl.Collator("en", {numeric:true, sensitivity:"base"});
         return collator.compare(a.b.name||"", b.b.name||"");
       }
+      const aVisual=Number(autoVisual[String(a.b.id)])||0;
+      const bVisual=Number(autoVisual[String(b.b.id)])||0;
+      const aSpawned=(a.b.next<=now)||(a.b.autoKill===true&&aVisual>0&&now<aVisual+SPAWNED_DISPLAY_MS);
+      const bSpawned=(b.b.next<=now)||(b.b.autoKill===true&&bVisual>0&&now<bVisual+SPAWNED_DISPLAY_MS);
+      if(aSpawned!==bSpawned) return aSpawned ? -1 : 1;
       return a.b.next-b.b.next;
     });
 
