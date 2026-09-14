@@ -133,7 +133,7 @@ function fromRow(r){
     rm: Number(r.rm) || 0,
     respawn: Number(r.respawn) || 0,
     next: Number(r.next_spawn) || 0,
-    autoKill: r.auto_kill !== false,
+    autoKill: true,
     autoDelay: Number(r.auto_delay) || 1,
      hidden: isHidden({id:r.id,name:r.name})
   };
@@ -518,7 +518,7 @@ function render(){
       <div class="warning">${rem<=0||rem<1800000?"▲":""}</div>
       <div class="timer">
         <div class="timer-main">${showSpawned?"SPAWNED":fmt(rem)}</div>
-        <div class="timer-sub">${new Date(b.next).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit",second:"2-digit"})}</div>
+        <div class="timer-sub">${new Date(b.next).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false})}</div>
       </div>
       <div class="actions">
         <button class="hide" onclick="hideBoss(${i})">${b.hidden?"UNHIDE":"HIDE"}</button>
@@ -557,7 +557,7 @@ async function resetAll(){
 
 async function autoProcess(){
   const now=Date.now();
-  const due=bosses.filter(b=>b.autoKill && b.next && now>=b.next+(b.autoDelay||1)*60000);
+  const due=bosses.filter(b=>b.next && now>=b.next+(b.autoDelay||1)*60000);
   for(const b of due){
     const oldNext=b.next;
     const next=now+b.respawn;
