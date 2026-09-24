@@ -34,7 +34,7 @@ const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_v0bjeJ8wfzb5AYjslHcUYA_nRomPTqz
 
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = id => document.getElementById(id);
-const SPAWNED_DISPLAY_MS = 2 * 60000;
+const SPAWNED_DISPLAY_MS = 5 * 60000;
 const AUTO_KILL_DEFAULT_MS = 60000;
 const AUTO_SPAWN_VISUAL_KEY = "bossTimerAutoSpawnVisual";
 function getAutoSpawnVisual(){
@@ -154,6 +154,27 @@ function toRow(b){
   };
 }
 
+async function catchUpOverdueBosses(){
+  const now=Date.now();
+  const overdue=bosses.filter(b=>b.next && b.respawn>0 && now>=b.next+(b.autoDelay||1)*60000);
+  for(const b of overdue){
+    const oldNext=b.next;
+    const next=now+b.respawn;
+    const visual=getAutoSpawnVisual();
+    delete visual[String(b.id)];
+    setAutoSpawnVisual(visual);
+    b.next=next;
+    const {error}=await sb.from("bosses")
+      .update({next_spawn:next})
+      .eq("id",b.id)
+      .lt("next_spawn",now+1);
+    if(error){
+      b.next=oldNext;
+      console.error("Catch-up auto-kill failed:", error);
+    }
+  }
+}
+
 async function loadBosses(){
   if(loading) return;
   loading = true;
@@ -181,6 +202,7 @@ async function loadBosses(){
     }else{
       bosses = data.map(fromRow);
     }
+    await catchUpOverdueBosses();
     render();
   }catch(err){
     console.error(err);
