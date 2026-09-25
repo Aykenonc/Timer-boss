@@ -43,6 +43,9 @@ function getAutoSpawnVisual(){
 function setAutoSpawnVisual(data){
   try{localStorage.setItem(AUTO_SPAWN_VISUAL_KEY,JSON.stringify(data));}catch(e){}
 }
+const AUTO_STATUS_KEY = "bossTimerAutoStatus";
+function getAutoStatus(){try{return JSON.parse(localStorage.getItem(AUTO_STATUS_KEY)||"{}");}catch(e){return {};}}
+function setAutoStatus(data){try{localStorage.setItem(AUTO_STATUS_KEY,JSON.stringify(data));}catch(e){}}
 const SORT_MODE_KEY = "bossTimerSortMode";
 let sortMode = localStorage.getItem(SORT_MODE_KEY) || "spawn";
 const sortSelect = $("sortMode");
@@ -258,7 +261,11 @@ $("save").onclick = async () => {
 async function kill(i){
   const b=bosses[i];
   if(!b) return;
+  if(!confirm("Kill " + b.name + "?")) return;
   const oldNext=b.next;
+  const autoStatus=getAutoStatus();
+  delete autoStatus[String(b.id)];
+  setAutoStatus(autoStatus);
   const next=Date.now()+b.respawn;
   b.next=next;
   render();
@@ -537,7 +544,7 @@ function render(){
         <div class="boss-detail">Cycle: <span class="v">${String(b.hh).padStart(2,"0")}:${String(b.mm).padStart(2,"0")}</span> &nbsp;|&nbsp; Respawn: <span class="v">${b.rh}j ${b.rm}m</span></div>
       </div>
       <div><button class="kill" onclick="kill(${i})">KILL</button></div>
-      <div class="warning">${rem<=0||rem<1800000?"▲":""}</div>
+      <div class="warning">${getAutoStatus()[String(b.id)]?"<span title=\"[AUTO] time may not be accurate\">🔔</span>":""}</div>
       <div class="timer">
         <div class="timer-main">${showSpawned?"SPAWNED":fmt(rem)}</div>
         <div class="timer-sub">${new Date(b.next).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false})}</div>
@@ -602,8 +609,16 @@ async function autoProcess(){
       const visual=getAutoSpawnVisual();
       delete visual[String(b.id)];
       setAutoSpawnVisual(visual);
+      const status=getAutoStatus();
+      delete status[String(b.id)];
+      setAutoStatus(status);
       render();
       console.error("Auto-process failed:", error);
+    } else {
+      const status=getAutoStatus();
+      status[String(b.id)]=true;
+      setAutoStatus(status);
+      render();
     }
   }
 }
