@@ -266,8 +266,13 @@ function calcNext(h,m,respawnMs){
   const now=Date.now();
   const base=new Date();
   base.setHours(h,m,0,0);
+
+  // Treat Cycle Start as the last-kill time. If today's time has not
+  // happened yet, the last occurrence was yesterday. Then advance by
+  // the respawn interval until the next spawn is in the future.
   let t=base.getTime();
-  if(t>now) return t;
+  if(t>now) t-=24*60*60000;
+
   if(respawnMs<=0) return t;
   while(t<=now) t+=respawnMs;
   return t;
