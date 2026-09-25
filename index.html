@@ -13,14 +13,35 @@ button{background:#181c21;color:#fff;border:1px solid #343941;border-radius:6px;
 @media(max-width:1050px){body{padding:10px}.header{flex-wrap:wrap}.header-tools{margin-left:0;width:100%}.search{flex:1;width:auto}#sortMode{padding:7px 8px;font-size:9px}.table-head,.boss-row{grid-template-columns:minmax(180px,1fr) 80px 32px 120px 215px}}
 @media(max-width:760px){body{padding:5px}.title{font-size:18px}.title span{font-size:14px}.header{gap:6px;margin-bottom:7px}.header-tools{gap:4px}.header-tools button{padding:7px 8px;font-size:9px}.search{padding:7px 8px;font-size:10px}#sortMode{padding:7px 8px;font-size:9px}.table-head,.boss-row{grid-template-columns:minmax(100px,1.05fr) 65px 22px 86px 190px}.table-head{padding:0 7px;font-size:9px;min-height:32px}.boss-row{padding:5px 7px;min-height:48px}.boss-name{font-size:11px}.boss-detail{font-size:8px;margin-top:2px}.location{font-size:9px}.warning{font-size:12px}.timer-main{font-size:11px}.timer-sub{font-size:7px;margin-top:2px}.actions{gap:3px}.actions button{min-width:0;padding:5px 6px;font-size:8px}}
 @media(max-width:520px){body{overflow-x:auto;min-width:500px}}
+
+/* Mobile preview */
+@media (max-width: 600px){
+  body{overflow-x:hidden}
+  .header{padding:10px;gap:8px;display:flex;flex-direction:column;align-items:stretch}
+  .title{font-size:18px}
+  .header-tools{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .header-tools .search{grid-column:1/-1;width:100%;box-sizing:border-box}
+  .header-tools button,.header-tools select{min-height:38px;font-size:12px}
+  .table{width:100%;overflow:hidden}
+  .table-head{grid-template-columns:minmax(0,1fr) 58px 42px 100px 0px;padding:8px 8px;font-size:10px}
+  .boss-row{grid-template-columns:minmax(0,1fr) 58px 42px 100px 0px;padding:10px 8px;gap:4px}
+  .boss-name{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .boss-detail{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .kill{min-width:52px;padding:8px 5px;font-size:11px}
+  .timer-main{font-size:15px}
+  .timer-sub{font-size:10px}
+  .warning{font-size:16px}
+  .actions{display:none}
+}
 </style>
 </head>
 <body>
 <div class="header"><div class="title">BOSS TIMER <span>V5</span></div><div class="header-tools">
-<input id="search" class="search" placeholder="🔍  Search boss..."><select id="sortMode" title="Sort boss"><option value="spawn">Next Spawn</option><option value="name">Name A-Z</option></select><button id="undoBtn" onclick="undoAction()" title="Undo" disabled>↶ Undo</button><button id="redoBtn" onclick="redoAction()" title="Redo" disabled>↷ Redo</button><button class="add-btn" onclick="openAddModal()">Tambah Boss</button><button onclick="document.getElementById('importFile').click()">Import JSON</button><button onclick="exportData()">Export JSON</button><button onclick="toggleHidden()" id="hiddenBtn">Show Hidden</button><button onclick="resetAll()">Reset All</button><button class="settings">⚙</button><input id="importFile" type="file" accept=".json" style="display:none" onchange="importData(event)"></div></div>
+<input id="search" class="search" placeholder="🔍  Search boss..."><select id="sortMode" title="Sort boss"><option value="spawn">Next Spawn</option><option value="name">Name A-Z</option></select><button id="undoBtn" onclick="undoAction()" title="Undo" disabled>↶ Undo</button><button id="redoBtn" onclick="redoAction()" title="Redo" disabled>↷ Redo</button><button class="add-btn" onclick="openAddModal()">Tambah Boss</button><button onclick="document.getElementById('importFile').click()">Import JSON</button><button onclick="exportData()">Export JSON</button><button onclick="toggleHidden()" id="hiddenBtn">Show Hidden</button><button onclick="resetAll()">Reset All</button><button class="settings" onclick="openSettingsModal()">⚙</button><input id="importFile" type="file" accept=".json" style="display:none" onchange="importData(event)"></div></div>
 <div class="table"><div class="table-head"><div>BOSS</div><div>KILL</div><div>STATUS</div><div style="text-align:right">NEXT SPAWN</div><div></div></div><div id="list"></div></div>
-<div id="addModal" class="modal" onclick="if(event.target===this)closeAddModal()"><div class="modal-box"><h3>Tambah Boss</h3><label>Nama Boss</label><input id="name" placeholder="Nama Boss"><label>Lokasi</label><input id="location" placeholder="Lokasi Boss"><label>Cycle Start</label><div class="modal-row"><div class="time-field"><span>Jam</span><input id="hh" type="number" min="0" max="23" value="8"></div><div class="time-sep">:</div><div class="time-field"><span>Menit</span><input id="mm" type="number" min="0" max="59" value="0"></div></div><label>Respawn</label><div class="modal-row"><input id="rh" type="number" min="0" value="6"> Jam <input id="rm" type="number" min="0" max="59" value="0"> Menit</div><label><input type="checkbox" id="autoKill" checked style="width:auto"> Auto Kill</label><label>Delay (menit)</label><input id="autoDelay" type="number" value="0.333333" min="0"><div class="modal-actions"><button onclick="closeAddModal()">Batal</button><button class="primary" id="save">Tambah Boss</button></div></div></div>
+<div id="addModal" class="modal" onclick="if(event.target===this)closeAddModal()"><div class="modal-box"><h3>Tambah Boss</h3><label>Nama Boss</label><input id="name" placeholder="Nama Boss"><label>Lokasi</label><input id="location" placeholder="Lokasi Boss"><label>Cycle Start</label><div class="modal-row"><div class="time-field"><span>Jam</span><input id="hh" type="number" min="0" max="23" value="8"></div><div class="time-sep">:</div><div class="time-field"><span>Menit</span><input id="mm" type="number" min="0" max="59" value="0"></div></div><label>Respawn</label><div class="modal-row"><input id="rh" type="number" min="0" value="6"> Jam <input id="rm" type="number" min="0" max="59" value="0"> Menit</div><label><input type="checkbox" id="autoKill" checked style="width:auto"> Auto Kill</label><label>Auto Kill Delay (global)</label><input id="autoDelay" type="text" value="20 detik" disabled><div class="modal-actions"><button onclick="closeAddModal()">Batal</button><button class="primary" id="save">Tambah Boss</button></div></div></div>
 <div id="editModal" class="modal" onclick="if(event.target===this)closeEditModal()"><div class="modal-box"><h3>Edit Boss</h3><label>Nama Boss</label><input id="editName"><label>Lokasi</label><input id="editLocation"><label>Cycle Start</label><div class="modal-row"><div class="time-field"><span>Jam</span><input id="editHh" type="number" min="0" max="23"></div><div class="time-sep">:</div><div class="time-field"><span>Menit</span><input id="editMm" type="number" min="0" max="59"></div></div><label>Respawn</label><div class="modal-row"><input id="editRh" type="number" min="0"> Jam <input id="editRm" type="number" min="0" max="59"> Menit</div><div class="modal-actions"><button onclick="closeEditModal()">Batal</button><button class="primary" onclick="saveEditModal()">Simpan</button></div></div></div>
+<div id="settingsModal" class="modal" onclick="if(event.target===this)closeSettingsModal()"><div class="modal-box"><h3>Settings</h3><label>Global Auto Kill Delay (detik)</label><input id="globalAutoKillSeconds" type="number" min="0" step="1"><div class="modal-actions"><button onclick="closeSettingsModal()">Batal</button><button class="primary" onclick="saveGlobalAutoKill()">Simpan</button></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
@@ -35,17 +56,20 @@ const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_v0bjeJ8wfzb5AYjslHcUYA_nRomPTqz
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = id => document.getElementById(id);
 const SPAWNED_DISPLAY_MS = 5 * 60000;
-const AUTO_KILL_DEFAULT_MS = 20000;
+const AUTO_KILL_DEFAULT_SECONDS = 20;
+const GLOBAL_AUTO_KILL_KEY = "bossTimerGlobalAutoKillSeconds";
+const AUTO_STATUS_KEY = "bossTimerAutoStatus";
 const AUTO_SPAWN_VISUAL_KEY = "bossTimerAutoSpawnVisual";
+let globalAutoKillSeconds = Math.max(0, parseInt(localStorage.getItem(GLOBAL_AUTO_KILL_KEY) || AUTO_KILL_DEFAULT_SECONDS, 10) || AUTO_KILL_DEFAULT_SECONDS);
+function getAutoStatus(){try{return JSON.parse(localStorage.getItem(AUTO_STATUS_KEY)||"{}");}catch(e){return {};}}
+function setAutoStatus(data){try{localStorage.setItem(AUTO_STATUS_KEY,JSON.stringify(data));}catch(e){}}
+function getGlobalAutoKillSeconds(){return globalAutoKillSeconds;}
 function getAutoSpawnVisual(){
   try{return JSON.parse(localStorage.getItem(AUTO_SPAWN_VISUAL_KEY)||"{}");}catch(e){return {};}
 }
 function setAutoSpawnVisual(data){
   try{localStorage.setItem(AUTO_SPAWN_VISUAL_KEY,JSON.stringify(data));}catch(e){}
 }
-const AUTO_STATUS_KEY = "bossTimerAutoStatus";
-function getAutoStatus(){try{return JSON.parse(localStorage.getItem(AUTO_STATUS_KEY)||"{}");}catch(e){return {};}}
-function setAutoStatus(data){try{localStorage.setItem(AUTO_STATUS_KEY,JSON.stringify(data));}catch(e){}}
 const SORT_MODE_KEY = "bossTimerSortMode";
 let sortMode = localStorage.getItem(SORT_MODE_KEY) || "spawn";
 const sortSelect = $("sortMode");
@@ -137,7 +161,7 @@ function fromRow(r){
     respawn: Number(r.respawn) || 0,
     next: Number(r.next_spawn) || 0,
     autoKill: true,
-    autoDelay: Number(r.auto_delay) || 20/60,
+    autoDelay: globalAutoKillSeconds,
      hidden: isHidden({id:r.id,name:r.name})
   };
 }
@@ -153,13 +177,13 @@ function toRow(b){
     respawn: Number(b.respawn) || 0,
     next_spawn: Number(b.next) || 0,
     auto_kill: b.autoKill !== false,
-    auto_delay: Number(b.autoDelay) || 1
+    auto_delay: Number(globalAutoKillSeconds)
   };
 }
 
 async function catchUpOverdueBosses(){
   const now=Date.now();
-  const overdue=bosses.filter(b=>b.next && b.respawn>0 && now>=b.next+(b.autoDelay||1)*60000);
+  const overdue=bosses.filter(b=>b.next && b.respawn>0 && now>=b.next+(globalAutoKillSeconds*1000));
   for(const b of overdue){
     const oldNext=b.next;
     const next=now+b.respawn;
@@ -174,6 +198,10 @@ async function catchUpOverdueBosses(){
     if(error){
       b.next=oldNext;
       console.error("Catch-up auto-kill failed:", error);
+    }else{
+      const status=getAutoStatus();
+      status[String(b.id)]=true;
+      setAutoStatus(status);
     }
   }
 }
@@ -195,16 +223,35 @@ async function loadBosses(){
         ...b,
         location: b.location || "Unmapped",
         autoKill: b.autoKill !== false,
-        autoDelay: b.autoDelay === undefined ? 1 : b.autoDelay
+        autoDelay: globalAutoKillSeconds
       }));
       const {error: seedError} = await sb.from("bosses").insert(seed);
       if(seedError) throw seedError;
       const again = await sb.from("bosses").select("*").order("next_spawn", {ascending:true});
       if(again.error) throw again.error;
-      bosses = (again.data || []).map(fromRow);
+      const rows = again.data || [];
+      if(rows.length) globalAutoKillSeconds = Math.max(0, Number(rows[0].auto_delay) || AUTO_KILL_DEFAULT_SECONDS);
+      localStorage.setItem(GLOBAL_AUTO_KILL_KEY,String(globalAutoKillSeconds));
+      bosses = rows.map(fromRow);
     }else{
+      const dbDelayValues = data.map(r=>Number(r.auto_delay)).filter(Number.isFinite);
+      const allSame = dbDelayValues.length === data.length && dbDelayValues.every(v=>v===dbDelayValues[0]);
+      const firstDelay = allSame ? dbDelayValues[0] : null;
+      const hasSavedGlobal = localStorage.getItem(GLOBAL_AUTO_KILL_KEY) !== null;
+      // V22 stored the old default as 1 minute. On the first run of this version,
+      // migrate that legacy value to the new 20-second global default once.
+      if(!hasSavedGlobal && firstDelay===1){
+        globalAutoKillSeconds = AUTO_KILL_DEFAULT_SECONDS;
+        localStorage.setItem(GLOBAL_AUTO_KILL_KEY,String(globalAutoKillSeconds));
+        const {error:delayError}=await sb.from("bosses").update({auto_delay:globalAutoKillSeconds}).not("id","is",null);
+        if(delayError) console.error("Legacy delay migration failed:", delayError);
+      }else if(firstDelay!==null){
+        globalAutoKillSeconds = Math.max(0, firstDelay);
+        localStorage.setItem(GLOBAL_AUTO_KILL_KEY,String(globalAutoKillSeconds));
+      }
       bosses = data.map(fromRow);
     }
+    bosses.forEach(b=>b.autoDelay=globalAutoKillSeconds);
     await catchUpOverdueBosses();
     render();
   }catch(err){
@@ -235,7 +282,7 @@ $("save").onclick = async () => {
     rh:+$("rh").value||0,
     rm:+$("rm").value||0,
     autoKill:$("autoKill").checked,
-    autoDelay:(+$("autoDelay").value)||0
+    autoDelay:globalAutoKillSeconds
   };
   if(!b.name){ alert("Isi nama boss"); return; }
 
@@ -253,7 +300,7 @@ $("save").onclick = async () => {
 
   closeAddModal();
   ["name","location","hh","mm","rh","rm"].forEach(id=>$(id).value="");
-  $("autoDelay").value=1;
+  $("autoDelay").value=globalAutoKillSeconds+" detik";
   $("autoKill").checked=true;
   await loadBosses();
 };
@@ -263,9 +310,9 @@ async function kill(i){
   if(!b) return;
   if(!confirm("Kill " + b.name + "?")) return;
   const oldNext=b.next;
-  const autoStatus=getAutoStatus();
-  delete autoStatus[String(b.id)];
-  setAutoStatus(autoStatus);
+  const status=getAutoStatus();
+  delete status[String(b.id)];
+  setAutoStatus(status);
   const next=Date.now()+b.respawn;
   b.next=next;
   render();
@@ -544,7 +591,7 @@ function render(){
         <div class="boss-detail">Cycle: <span class="v">${String(b.hh).padStart(2,"0")}:${String(b.mm).padStart(2,"0")}</span> &nbsp;|&nbsp; Respawn: <span class="v">${b.rh}j ${b.rm}m</span></div>
       </div>
       <div><button class="kill" onclick="kill(${i})">KILL</button></div>
-      <div class="warning">${getAutoStatus()[String(b.id)]?"<span title=\"[AUTO] time may not be accurate\">🔔</span>":""}</div>
+      <div class="warning">${getAutoStatus()[String(b.id)] ? '<span title="[AUTO] time may not be accurate">🔔</span>' : ""}</div>
       <div class="timer">
         <div class="timer-main">${showSpawned?"SPAWNED":fmt(rem)}</div>
         <div class="timer-sub">${new Date(b.next).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false})}</div>
@@ -569,6 +616,29 @@ function closeAddModal(){$("addModal").classList.remove("show")}
 if($("search"))$("search").addEventListener("input",render);
 updateHistoryButtons();
 
+function openSettingsModal(){
+  $("globalAutoKillSeconds").value=globalAutoKillSeconds;
+  $("settingsModal").classList.add("show");
+}
+function closeSettingsModal(){$("settingsModal").classList.remove("show");}
+async function saveGlobalAutoKill(){
+  const seconds=Math.max(0, parseInt($("globalAutoKillSeconds").value,10));
+  if(!Number.isFinite(seconds)){alert("Isi angka detik yang valid");return;}
+  const old=globalAutoKillSeconds;
+  globalAutoKillSeconds=seconds;
+  localStorage.setItem(GLOBAL_AUTO_KILL_KEY,String(seconds));
+  const {error}=await sb.from("bosses").update({auto_delay:seconds}).not("id","is",null);
+  if(error){
+    globalAutoKillSeconds=old;
+    localStorage.setItem(GLOBAL_AUTO_KILL_KEY,String(old));
+    alert("Gagal mengubah Auto Kill Delay: "+error.message);
+    return;
+  }
+  bosses.forEach(b=>b.autoDelay=seconds);
+  closeSettingsModal();
+  render();
+}
+
 async function resetAll(){
   if(!confirm("Reset semua boss?")) return;
   const {error:delError}=await sb.from("bosses").delete().not("id","is",null);
@@ -577,7 +647,7 @@ async function resetAll(){
     ...b,
     location:b.location||"Unmapped",
     autoKill:true,
-    autoDelay:20/60
+    autoDelay:globalAutoKillSeconds
   }));
   const {error:insError}=await sb.from("bosses").insert(rows);
   if(insError){alert("Gagal memasukkan boss awal: "+insError.message);return;}
@@ -586,7 +656,7 @@ async function resetAll(){
 
 async function autoProcess(){
   const now=Date.now();
-  const due=bosses.filter(b=>b.next && now>=b.next+(b.autoDelay||1)*60000);
+  const due=bosses.filter(b=>b.next && now>=b.next+(globalAutoKillSeconds*1000));
   for(const b of due){
     const oldNext=b.next;
     const next=now+b.respawn;
@@ -614,7 +684,7 @@ async function autoProcess(){
       setAutoStatus(status);
       render();
       console.error("Auto-process failed:", error);
-    } else {
+    }else{
       const status=getAutoStatus();
       status[String(b.id)]=true;
       setAutoStatus(status);
