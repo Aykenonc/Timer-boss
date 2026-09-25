@@ -8,7 +8,7 @@
 *{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Arial,Helvetica,sans-serif;background:#090a0c;color:#f5f5f5;max-width:1500px;margin:auto;padding:14px 18px 30px;font-size:13px}
 .header{display:flex;align-items:center;gap:14px;margin-bottom:14px}.title{font-size:24px;font-weight:800;white-space:nowrap}.title span{color:#e33b32;font-size:18px}.header-tools{display:flex;align-items:center;gap:8px;margin-left:auto}.search{width:260px;background:#0d1014;color:#fff;border:1px solid #343941;border-radius:7px;padding:10px 12px;outline:0;font-size:13px}#sortMode{background:#0d1014;color:#fff;border:1px solid #343941;border-radius:7px;padding:10px 12px;outline:0;font-size:12px}#sortMode option{background:#0d1014;color:#fff}
 button{background:#181c21;color:#fff;border:1px solid #343941;border-radius:6px;padding:9px 13px;font-size:12px;font-weight:700;cursor:pointer}button:hover{background:#242a31}button:disabled{opacity:.38;cursor:not-allowed}button:disabled:hover{background:#181c21}.add-btn{background:#702b26;border-color:#8e3831}.settings{font-size:17px;padding:7px 11px}
-.table{border:1px solid #2a2d31;border-radius:9px;overflow:hidden;background:#0b0d10}.table-head,.boss-row{display:grid;grid-template-columns:minmax(270px,1.1fr) 95px 45px 150px 255px;align-items:center}.table-head{min-height:42px;background:#0d0f12;color:#aab0b8;font-size:12px;text-transform:uppercase;letter-spacing:.3px;padding:0 18px}.boss-row{min-height:64px;padding:7px 18px;border-top:1px solid #272a2e;background:#0d0f11}.boss-row:nth-child(odd){background:#100c0d}.boss-row:hover{background:#17191d}.boss-info{min-width:0}.boss-name{font-size:15px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.boss-detail{margin-top:5px;color:#9ca2aa;font-size:11px}.boss-detail .v{color:#43c56b;font-weight:700}.location{color:#aeb4bc;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.warning{text-align:center;color:#ffd400;font-size:18px;font-weight:900}.status-ready .warning{color:#ffd400}.timer{text-align:right;white-space:nowrap}.timer-main{font-size:16px;color:#ffd400;font-weight:800}.timer-sub{color:#969ca4;font-size:11px;margin-top:4px}.status-ready .timer-main{color:#ff4d43}.actions{display:flex;justify-content:flex-end;gap:9px}.actions button{min-width:60px}.actions .hide{color:#d7b3ff}.actions .kill{color:#ff493e}.actions .edit{color:#a9d6ff}.empty{text-align:center;padding:30px;color:#777}
+.table{border:1px solid #2a2d31;border-radius:9px;overflow:hidden;background:#0b0d10}.table-head,.boss-row{display:grid;grid-template-columns:minmax(270px,1.1fr) 95px 45px 150px 255px;align-items:center}.table-head{min-height:42px;background:#0d0f12;color:#aab0b8;font-size:12px;text-transform:uppercase;letter-spacing:.3px;padding:0 18px}.boss-row{min-height:64px;padding:7px 18px;border-top:1px solid #272a2e;background:#0d0f11}.boss-row:nth-child(odd){background:#100c0d}.boss-row:hover{background:#17191d}.boss-info{min-width:0}.boss-name{font-size:15px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.boss-detail{margin-top:5px;color:#9ca2aa;font-size:11px}.boss-detail .v{color:#43c56b;font-weight:700}.location{color:#aeb4bc;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.warning{text-align:center;color:#ffd400;font-size:18px;font-weight:900}.status-ready .warning{color:#ffd400}.auto-status{font-size:14px;cursor:help;filter:saturate(.9)}.timer{text-align:right;white-space:nowrap}.timer-main{font-size:16px;color:#ffd400;font-weight:800}.timer-sub{color:#969ca4;font-size:11px;margin-top:4px}.status-ready .timer-main{color:#ff4d43}.actions{display:flex;justify-content:flex-end;gap:9px}.actions button{min-width:60px}.actions .hide{color:#d7b3ff}.actions .kill{color:#ff493e}.actions .edit{color:#a9d6ff}.empty{text-align:center;padding:30px;color:#777}
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:9999;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-box{width:min(430px,100%);background:#181c21;border:1px solid #38404a;border-radius:8px;box-shadow:0 24px 70px #000a;padding:16px}.modal-box h3{margin:0 0 12px;font-size:15px}.modal-box label{display:block;margin:9px 0 5px;color:#b6bcc4;font-size:10px}.modal-box input{width:100%;padding:8px 9px;border:1px solid #343b44;background:#0c0f13;color:#fff;border-radius:5px}.modal-row{display:flex;gap:8px;align-items:flex-end}.time-field{display:flex;flex-direction:column;gap:4px}.time-field span{font-size:9px;color:#8f97a1}.time-field input{width:66px}.time-sep{padding-bottom:7px;color:#8f97a1}.modal-actions{display:flex;justify-content:flex-end;gap:6px;margin-top:14px}.modal-actions .primary{background:#37414c}
 @media(max-width:1050px){body{padding:10px}.header{flex-wrap:wrap}.header-tools{margin-left:0;width:100%}.search{flex:1;width:auto}#sortMode{padding:7px 8px;font-size:9px}.table-head,.boss-row{grid-template-columns:minmax(180px,1fr) 80px 32px 120px 215px}}
 @media(max-width:760px){body{padding:5px}.title{font-size:18px}.title span{font-size:14px}.header{gap:6px;margin-bottom:7px}.header-tools{gap:4px}.header-tools button{padding:7px 8px;font-size:9px}.search{padding:7px 8px;font-size:10px}#sortMode{padding:7px 8px;font-size:9px}.table-head,.boss-row{grid-template-columns:minmax(100px,1.05fr) 65px 22px 86px 190px}.table-head{padding:0 7px;font-size:9px;min-height:32px}.boss-row{padding:5px 7px;min-height:48px}.boss-name{font-size:11px}.boss-detail{font-size:8px;margin-top:2px}.location{font-size:9px}.warning{font-size:12px}.timer-main{font-size:11px}.timer-sub{font-size:7px;margin-top:2px}.actions{gap:3px}.actions button{min-width:0;padding:5px 6px;font-size:8px}}
@@ -42,6 +42,13 @@ function getAutoSpawnVisual(){
 }
 function setAutoSpawnVisual(data){
   try{localStorage.setItem(AUTO_SPAWN_VISUAL_KEY,JSON.stringify(data));}catch(e){}
+}
+const AUTO_STATUS_KEY = "bossTimerAutoStatus";
+function getAutoStatus(){
+  try{return JSON.parse(localStorage.getItem(AUTO_STATUS_KEY)||"{}");}catch(e){return {};}
+}
+function setAutoStatus(data){
+  try{localStorage.setItem(AUTO_STATUS_KEY,JSON.stringify(data));}catch(e){}
 }
 const SORT_MODE_KEY = "bossTimerSortMode";
 let sortMode = localStorage.getItem(SORT_MODE_KEY) || "spawn";
@@ -171,6 +178,10 @@ async function catchUpOverdueBosses(){
     if(error){
       b.next=oldNext;
       console.error("Catch-up auto-kill failed:", error);
+    }else{
+      const status=getAutoStatus();
+      status[String(b.id)]=true;
+      setAutoStatus(status);
     }
   }
 }
@@ -258,14 +269,22 @@ $("save").onclick = async () => {
 async function kill(i){
   const b=bosses[i];
   if(!b) return;
+  if(!confirm("Kill " + b.name + "?")) return;
   const oldNext=b.next;
   const next=Date.now()+b.respawn;
+  const autoStatus=getAutoStatus();
+  const oldAutoStatus=!!autoStatus[String(b.id)];
+  delete autoStatus[String(b.id)];
+  setAutoStatus(autoStatus);
   b.next=next;
   render();
 
   const {error}=await sb.from("bosses").update({next_spawn:next}).eq("id",b.id);
   if(error){
     b.next=oldNext;
+    const restoreStatus=getAutoStatus();
+    if(oldAutoStatus) restoreStatus[String(b.id)]=true;
+    setAutoStatus(restoreStatus);
     render();
     alert("Gagal KILL: " + error.message);
     return;
@@ -273,8 +292,23 @@ async function kill(i){
 
   pushHistory({
     label:"KILL "+b.name,
-    undo:async()=>{ const {error}=await sb.from("bosses").update({next_spawn:oldNext}).eq("id",b.id); if(error)throw error; await loadBosses(); },
-    redo:async()=>{ const {error}=await sb.from("bosses").update({next_spawn:next}).eq("id",b.id); if(error)throw error; await loadBosses(); }
+    undo:async()=>{
+      const {error}=await sb.from("bosses").update({next_spawn:oldNext}).eq("id",b.id);
+      if(error)throw error;
+      const status=getAutoStatus();
+      if(oldAutoStatus) status[String(b.id)]=true;
+      else delete status[String(b.id)];
+      setAutoStatus(status);
+      await loadBosses();
+    },
+    redo:async()=>{
+      const {error}=await sb.from("bosses").update({next_spawn:next}).eq("id",b.id);
+      if(error)throw error;
+      const status=getAutoStatus();
+      delete status[String(b.id)];
+      setAutoStatus(status);
+      await loadBosses();
+    }
   });
   await loadBosses();
 }
@@ -524,6 +558,8 @@ function render(){
     const visualSpawnAt=Number(autoVisual[String(b.id)])||0;
     const showSpawned=(rem<=0)||(b.autoKill===true&&visualSpawnAt>now);
     const cls=showSpawned?"status-ready":rem<1800000?"status-soon":"";
+    const autoStatus=getAutoStatus();
+    const isAutoStatus=!!autoStatus[String(b.id)];
 
     if(rem>0&&rem<=60000&&!alarmed[b.id]){
       playBell();
@@ -537,7 +573,7 @@ function render(){
         <div class="boss-detail">Cycle: <span class="v">${String(b.hh).padStart(2,"0")}:${String(b.mm).padStart(2,"0")}</span> &nbsp;|&nbsp; Respawn: <span class="v">${b.rh}j ${b.rm}m</span></div>
       </div>
       <div><button class="kill" onclick="kill(${i})">KILL</button></div>
-      <div class="warning">${rem<=0||rem<1800000?"▲":""}</div>
+      <div class="warning">${isAutoStatus?'<span class="auto-status" title="[AUTO] time may not be accurate">🔔</span>':""}</div>
       <div class="timer">
         <div class="timer-main">${showSpawned?"SPAWNED":fmt(rem)}</div>
         <div class="timer-sub">${new Date(b.next).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false})}</div>
@@ -604,6 +640,11 @@ async function autoProcess(){
       setAutoSpawnVisual(visual);
       render();
       console.error("Auto-process failed:", error);
+    }else{
+      const status=getAutoStatus();
+      status[String(b.id)]=true;
+      setAutoStatus(status);
+      render();
     }
   }
 }
