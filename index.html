@@ -111,6 +111,7 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
 /* AUTH UI + role gate. Server-side RLS for bosses is still required for true view-only security. */
 const AUTH_PROFILE_TABLE = "user_profiles";
+const $ = id => document.getElementById(id);
 let currentProfile = null;
 let authReady = false;
 
@@ -203,7 +204,6 @@ sb.auth.onAuthStateChange(async (event, session)=>{
   }
 });
 
-const $ = id => document.getElementById(id);
 const SPAWNED_DISPLAY_MS = 5 * 60000;
 const AUTO_KILL_DEFAULT_SECONDS = 20;
 const GLOBAL_AUTO_KILL_KEY = "bossTimerGlobalAutoKillSeconds";
