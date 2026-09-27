@@ -38,33 +38,28 @@ button{background:#181c21;color:#fff;border:1px solid #343941;border-radius:6px;
 #authGate{position:fixed;inset:0;z-index:20000;background:#050608;display:block;overflow:hidden}
 #authGate[hidden]{display:none}
 .auth-scene{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
-.auth-scene-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;user-select:none}
-/* The generated artwork already contains the field frames, labels and icons.
-   These overlays only cover the baked-in placeholder text so the real inputs can sit cleanly on top. */
-.auth-field-cover{position:absolute;z-index:1;background:rgba(8,10,13,.96);border-radius:5px;pointer-events:none}
-.auth-user-cover{left:24.5%;top:39.6%;width:55.0%;height:7.0%}
-.auth-pass-cover{left:24.5%;top:50.1%;width:55.0%;height:7.0%}
-.auth-input{position:absolute;z-index:2;height:7.0%;width:55.0%;left:24.5%;border:0;background:transparent;color:#fff;outline:none;font-size:clamp(14px,1.45vw,22px);font-weight:500;padding:0 4px;line-height:1}
+.auth-scene-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;user-select:none}
+/* Controls are aligned to the actual right-side login panel in the artwork. */
+.auth-input{position:absolute;z-index:2;height:8.6%;width:34.8%;left:57.4%;border:0;background:transparent;color:#fff;outline:none;font-size:clamp(14px,1.45vw,22px);font-weight:500;padding:0 10px 0 58px;line-height:1}
 .auth-input::placeholder{color:transparent}
 .auth-input:focus{box-shadow:none}
-#authUsername{top:39.6%}
-#authPassword{top:50.1%}
-.auth-login{position:absolute;z-index:2;left:14.0%;top:72.5%;width:72.0%;height:12.5%;border:0;background:transparent;color:transparent;cursor:pointer;padding:0}
+#authUsername{top:49.1%}
+#authPassword{top:60.0%}
+.auth-login{position:absolute;z-index:2;left:57.0%;top:80.8%;width:36.0%;height:11.5%;border:0;background:transparent;color:transparent;cursor:pointer;padding:0}
 .auth-login:disabled{cursor:wait}
-.auth-error{position:absolute;z-index:3;left:18%;top:86.0%;width:64%;min-height:20px;color:#ff746c;font-size:12px;text-align:center;text-shadow:0 1px 4px #000}
-.auth-remember{position:absolute;z-index:2;left:15.9%;top:62.8%;width:28px;height:28px;opacity:0;cursor:pointer}
+.auth-error{position:absolute;z-index:3;left:58%;top:93.0%;width:34%;min-height:20px;color:#ff746c;font-size:12px;text-align:center;text-shadow:0 1px 4px #000}
+.auth-remember{position:absolute;z-index:2;left:57.5%;top:72.0%;width:28px;height:28px;opacity:0;cursor:pointer}
 #authUserBox{display:flex;align-items:center;gap:8px;margin-left:4px;color:#aeb4bc;font-size:11px}
 #authUserBox .auth-role{font-weight:800;color:#fff}
 #logoutBtn{display:none}
 body.auth-member .admin-only{display:none!important}
 @media(max-width:800px){
-  .auth-input{font-size:14px}
+  .auth-input{font-size:14px;padding-left:42px}
   .auth-error{font-size:10px}
 }
 @media(max-aspect-ratio:1/1){
-  .auth-input{font-size:14px}
+  .auth-input{font-size:14px;padding-left:42px}
 }
-
 </style>
 </head>
 <body>
