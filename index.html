@@ -3,7 +3,8 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Boss Timer V5 - Hide Boss</title>
+<title>Boss Timer V5</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <style>
 *{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Arial,Helvetica,sans-serif;background:#090a0c;color:#f5f5f5;max-width:1500px;margin:auto;padding:14px 18px 30px;font-size:13px}
 .header{display:flex;align-items:center;gap:14px;margin-bottom:14px}.title{font-size:24px;font-weight:800;white-space:nowrap}.title span{color:#e33b32;font-size:18px}.header-tools{display:flex;align-items:center;gap:8px;margin-left:auto}.search{width:260px;background:#0d1014;color:#fff;border:1px solid #343941;border-radius:7px;padding:10px 12px;outline:0;font-size:13px}#sortMode{background:#0d1014;color:#fff;border:1px solid #343941;border-radius:7px;padding:10px 12px;outline:0;font-size:12px}#sortMode option{background:#0d1014;color:#fff}
@@ -35,59 +36,51 @@ button{background:#181c21;color:#fff;border:1px solid #343941;border-radius:6px;
 }
 
 /* ===== AUTH / ANIME MMORPG LOGIN ===== */
-#authGate{position:fixed;inset:0;z-index:20000;background:#050608;display:block;overflow:hidden}
+#authGate{position:fixed;inset:0;z-index:20000;background:#090d16;display:flex;align-items:center;justify-content:center;overflow:hidden}
 #authGate[hidden]{display:none}
-.auth-scene{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:24px}
-.auth-scene::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.34);z-index:1}
+.auth-scene{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
 .auth-scene-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;user-select:none}
-.auth-card{position:relative;z-index:2;width:min(390px,92vw);padding:30px 30px 26px;background:rgba(10,12,17,.88);border:1px solid rgba(255,255,255,.14);border-radius:14px;box-shadow:0 24px 80px rgba(0,0,0,.65);backdrop-filter:blur(8px)}
-.auth-icon{width:52px;height:52px;margin:0 auto 14px;border-radius:14px;background:linear-gradient(135deg,#1677ff,#2450d8);display:flex;align-items:center;justify-content:center;font-size:25px;box-shadow:0 8px 24px rgba(20,100,255,.35)}
-.auth-card h1{margin:0;text-align:center;font-size:23px;font-weight:800;color:#fff}
-.auth-card .auth-subtitle{margin:7px 0 24px;text-align:center;color:#9ea6b3;font-size:12px}
-.auth-label{display:block;margin:0 0 6px;color:#c6ccd5;font-size:11px;font-weight:700}
-.auth-input{position:static;display:block;width:100%;height:44px;border:1px solid #353d49;background:#11151b;color:#fff;outline:none;border-radius:8px;font-size:14px;font-weight:500;padding:0 13px;line-height:1}
-.auth-input::placeholder{color:#69717d}
-.auth-input:focus{border-color:#347dff;box-shadow:0 0 0 3px rgba(52,125,255,.13)}
-.auth-field{margin-bottom:15px}
-.auth-login{position:static;display:block;width:100%;height:44px;border:0;border-radius:8px;background:#1769e8;color:#fff;cursor:pointer;padding:0;font-size:13px;font-weight:800;box-shadow:0 8px 22px rgba(23,105,232,.28)}
-.auth-login:hover{background:#2778f0}
-.auth-login:disabled{cursor:wait;opacity:.65}
-.auth-remember-row{display:flex;align-items:center;gap:7px;margin:-2px 0 17px;color:#929aa6;font-size:11px;cursor:pointer}
-.auth-remember{position:static;width:15px;height:15px;margin:0;opacity:1;cursor:pointer;accent-color:#1769e8}
-.auth-error{position:static;min-height:18px;margin:9px 0 0;color:#ff746c;font-size:11px;text-align:center;text-shadow:0 1px 4px #000}
-#authUserBox{display:flex;align-items:center;gap:8px;margin-left:4px;color:#aeb4bc;font-size:11px}
-#authUserBox .auth-role{font-weight:800;color:#fff}
-#logoutBtn{display:none}
+.auth-vignette{position:absolute;inset:0;background:radial-gradient(circle at 68% 50%,rgba(5,10,20,.05),rgba(2,5,12,.5) 100%);pointer-events:none}
+.auth-card{position:absolute;z-index:3;left:61%;top:50%;transform:translate(-50%,-50%);width:min(420px,34vw);min-width:340px;padding:30px 32px 28px;background:rgba(18,27,43,.94);border:1px solid rgba(130,155,190,.35);border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.55),0 0 40px rgba(30,80,180,.10);backdrop-filter:blur(8px);color:#fff}
+.auth-icon{width:58px;height:58px;margin:0 auto 16px;border-radius:15px;background:linear-gradient(145deg,#3f83ff,#1658d9);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(25,91,220,.35);font-size:30px}
+.auth-card h2{margin:0;text-align:center;font-size:24px;letter-spacing:-.4px}.auth-card h2 span{color:#ff4d5d}.auth-sub{margin:10px 0 28px;text-align:center;color:#9aa8bd;font-size:13px}
+.auth-label{display:block;margin:0 0 7px;color:#eef2f8;font-size:12px;font-weight:700}.auth-wrap{position:relative;margin-bottom:20px}
+.auth-field{width:100%;height:50px;padding:0 44px 0 14px;border:1px solid #3a4960;border-radius:8px;background:#0d1728;color:#fff;outline:none;font-size:15px}.auth-field::placeholder{color:#8995a8}.auth-field:focus{border-color:#4a87ff;box-shadow:0 0 0 3px rgba(55,125,255,.12)}
+.auth-eye{position:absolute;right:7px;top:7px;width:36px;height:36px;border:0;background:transparent;color:#aeb9ca;font-size:18px;padding:0;cursor:pointer}.auth-eye:hover{background:transparent;color:#fff}
+.auth-row{display:flex;align-items:center;gap:8px;margin:-2px 0 20px;color:#aeb9bd;font-size:12px}.auth-row input{width:17px;height:17px;accent-color:#3f83ff;cursor:pointer}.auth-row label{cursor:pointer}
+.auth-login{position:static;width:100%;height:48px;border:0;border-radius:8px;background:linear-gradient(135deg,#3d83f6,#2468e9);color:#fff;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 10px 25px rgba(35,104,233,.22)}.auth-login:hover{background:linear-gradient(135deg,#4b8df8,#2d70ee)}.auth-login:disabled{opacity:.65;cursor:wait}
+.auth-error{min-height:18px;margin-top:12px;color:#ff7272;font-size:12px;text-align:center}.auth-error:empty{margin-top:0;min-height:0}
+#authUserBox{display:flex;align-items:center;gap:8px;margin-left:4px;color:#aeb4bc;font-size:11px}#authUserBox .auth-role{font-weight:800;color:#fff}#logoutBtn{display:none}
 body.auth-member .admin-only{display:none!important}
-@media(max-width:600px){
-  .auth-scene{padding:14px}
-  .auth-card{padding:25px 20px 22px}
-}
-
+@media(max-width:900px){.auth-card{left:50%;width:min(420px,calc(100vw - 32px));min-width:0}.auth-scene-img{object-position:35% center}.auth-vignette{background:rgba(3,7,14,.45)}}
+@media(max-height:700px){.auth-card{padding:22px 26px}.auth-sub{margin-bottom:18px}.auth-wrap{margin-bottom:14px}.auth-row{margin-bottom:14px}}
 </style>
 </head>
 <body>
 
 <div id="authGate">
   <div class="auth-scene">
-    <img class="auth-scene-img" src="boss-timer-login-background.png" alt="Boss Timer fantasy background">
-    <div class="auth-card">
-      <div class="auth-icon">⏱</div>
-      <h1>Boss Timer V5</h1>
-      <div class="auth-subtitle">Login untuk melanjutkan ke timer</div>
-      <div class="auth-field">
-        <label class="auth-label" for="authUsername">Username</label>
-        <input id="authUsername" class="auth-input" autocomplete="username" aria-label="Username" placeholder="Masukkan username">
-      </div>
-      <div class="auth-field">
-        <label class="auth-label" for="authPassword">Kata Sandi</label>
-        <input id="authPassword" class="auth-input" type="password" autocomplete="current-password" aria-label="Password" placeholder="Masukkan kata sandi">
-      </div>
-      <label class="auth-remember-row"><input id="authRemember" class="auth-remember" type="checkbox" aria-label="Remember me"> Ingat saya</label>
-      <button id="authLoginBtn" class="auth-login" aria-label="Login">Masuk ke Timer</button>
-      <div id="authError" class="auth-error"></div>
-    </div>
+    <img class="auth-scene-img" src="boss-timer-login-background.png" alt="">
+    <div class="auth-vignette"></div>
   </div>
+  <form class="auth-card" id="authForm" autocomplete="on">
+    <div class="auth-icon">◷</div>
+    <h2>Boss Timer <span>V5</span></h2>
+    <div class="auth-sub">Login to continue to the timer</div>
+
+    <label class="auth-label" for="authUsername">Username</label>
+    <div class="auth-wrap"><input id="authUsername" class="auth-field" autocomplete="username" placeholder="Enter username" aria-label="Username"></div>
+
+    <label class="auth-label" for="authPassword">Password</label>
+    <div class="auth-wrap">
+      <input id="authPassword" class="auth-field" type="password" autocomplete="current-password" placeholder="Enter password" aria-label="Password">
+      <button type="button" class="auth-eye" id="authEye" aria-label="Show password">◉</button>
+    </div>
+
+    <div class="auth-row"><input id="authRemember" type="checkbox"><label for="authRemember">Remember me</label></div>
+    <button id="authLoginBtn" class="auth-login" type="submit">Login to Timer</button>
+    <div id="authError" class="auth-error"></div>
+  </form>
 </div>
 
 <div class="header"><div class="title">BOSS TIMER <span>V5</span></div><div class="header-tools"><div id="authUserBox"><span id="authUsernameLabel"></span><span class="auth-role" id="authRoleLabel"></span></div><button id="logoutBtn">Logout</button>
@@ -111,7 +104,6 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
 /* AUTH UI + role gate. Server-side RLS for bosses is still required for true view-only security. */
 const AUTH_PROFILE_TABLE = "user_profiles";
-const $ = id => document.getElementById(id);
 let currentProfile = null;
 let authReady = false;
 
@@ -159,30 +151,35 @@ async function loginWithUsername(){
   const btn = $("authLoginBtn");
   errBox.textContent = "";
   if(!username || !password){
-    errBox.textContent = "Isi username dan password.";
+    errBox.textContent = "Please enter username and password.";
     return;
   }
   btn.disabled = true;
-  btn.textContent = "LOGIN...";
+  btn.textContent = "Logging in...";
   try{
     const {data:loginEmail,error:lookupError} = await sb.rpc("get_login_email", {p_username: username});
     if(lookupError) throw lookupError;
-    if(!loginEmail) throw new Error("Username atau password salah.");
+    if(!loginEmail) throw new Error("Invalid username or password.");
     const {error:signInError} = await sb.auth.signInWithPassword({email:loginEmail,password});
-    if(signInError) throw new Error("Username atau password salah.");
+    if(signInError) throw new Error("Invalid username or password.");
     const profile = await loadCurrentProfile();
     await showAuthenticatedApp(profile);
   }catch(e){
     console.error(e);
     await sb.auth.signOut();
-    errBox.textContent = e.message || "Login gagal.";
+    errBox.textContent = e.message || "Login failed.";
   }finally{
     btn.disabled = false;
-    btn.textContent = "LOGIN";
+    btn.textContent = "Login to Timer";
   }
 }
 
-$("authLoginBtn").addEventListener("click", loginWithUsername);
+$("authForm").addEventListener("submit", e=>{ e.preventDefault(); loginWithUsername(); });
+$("authEye").addEventListener("click", ()=>{
+  const p=$("authPassword"); const show=p.type === "password"; p.type=show ? "text" : "password";
+  $("authEye").textContent=show ? "◉" : "◉";
+  $("authEye").setAttribute("aria-label", show ? "Hide password" : "Show password");
+});
 $("authPassword").addEventListener("keydown", e=>{ if(e.key==="Enter") loginWithUsername(); });
 $("authUsername").addEventListener("keydown", e=>{ if(e.key==="Enter") $("authPassword").focus(); });
 $("logoutBtn").addEventListener("click", async()=>{ await sb.auth.signOut(); location.reload(); });
@@ -204,6 +201,7 @@ sb.auth.onAuthStateChange(async (event, session)=>{
   }
 });
 
+const $ = id => document.getElementById(id);
 const SPAWNED_DISPLAY_MS = 5 * 60000;
 const AUTO_KILL_DEFAULT_SECONDS = 20;
 const GLOBAL_AUTO_KILL_KEY = "bossTimerGlobalAutoKillSeconds";
@@ -873,7 +871,7 @@ sb.channel("bosses-sync")
     console.error(e);
     await sb.auth.signOut();
     await showLogin();
-    $("authError").textContent = e.message || "Gagal memuat login.";
+    $("authError").textContent = e.message || "Failed to load login.";
   }
   setInterval(async()=>{
     if(!authReady || !currentProfile) return;
